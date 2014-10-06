@@ -16,11 +16,11 @@ private:	string name;
 private:	string description;
 
 		//Конструкторы
-			/*Пустой конструктор объекта*/
+			/*Конструктор объекта по умолчанию*/
 public:		cObject();
 			/*Конструктор копирования объекта*/
 public:		cObject(const cObject &in_object);
-			/*Параметрический конструктор обьекта*/
+			/*Конструктор с параметрами <имя объекта, описание объекта>*/
 public:		cObject(const string in_name, const string in_description);
 
 		//Деструктор

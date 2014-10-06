@@ -25,6 +25,9 @@
     <Filter Include="Файлы исходного кода\Classes">
       <UniqueIdentifier>{bc5afb26-c932-4543-acaa-1053db753b45}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы ресурсов\Descriptions">
+      <UniqueIdentifier>{110fe800-dba4-419d-a8ee-cb5d59e3d449}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,11 +45,6 @@
     <ClCompile Include="cUnit.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="default.txt">
-      <Filter>Файлы ресурсов</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="iClonable.h">
@@ -70,5 +68,10 @@
     <ClInclude Include="cUnit.h">
       <Filter>Заголовочные файлы\Classes</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="default.txt">
+      <Filter>Файлы ресурсов\Descriptions</Filter>
+    </Text>
   </ItemGroup>
 </Project>

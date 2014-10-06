@@ -5,7 +5,9 @@ class cGun :
 	public cObject
 {
 	//Конструкторы
+			/*Конструктор объекта по умолчанию*/
 public:		cGun();
+			/*Конструктор копирования объекта*/
 public:		cGun(const cGun &value);
 public:		cGun(cObject *value, int distance_value, int damage_value);
 	//Деструкторы

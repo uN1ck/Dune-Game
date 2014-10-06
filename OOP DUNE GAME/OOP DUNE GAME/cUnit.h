@@ -13,8 +13,11 @@ private:	bool isFlying;
 private:	int armor;
 
 	//Конструкторы
+			/*Конструктор объекта по умолчанию*/
 public:		cUnit();
+			/*Конструктор cUnit с параметрами <Базовый класс, броня>*/
 public:		cUnit(const cObject *value, int armor_value);
+			/*Конструктор копирования*/
 public:		cUnit(const cUnit &value);
 	//Деструктор
 public:		virtual ~cUnit();

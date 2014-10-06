@@ -9,9 +9,9 @@ private:	int filling;
 private:	int size;
 
 	//Конструкторы
-			/*Конструктор по умолчанию <без параметров>*/
+			/*Конструктор объекта по умолчанию*/
 public:		cTank();
-			/*Конструктор копирования <cTank>*/
+			/*Конструктор копирования объекта*/
 public:		cTank(const cTank& value);
 			/*Конструктор с параметрами <cObject, текущая наполненность, текущий размер>*/
 public:		cTank(const cObject *value, int in_filling, int in_size);
