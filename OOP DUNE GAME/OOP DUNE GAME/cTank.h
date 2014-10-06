@@ -13,7 +13,7 @@ public:		cTank();
 			/*Конструктор копирования <cTank>*/
 public:		cTank(const cTank& value);
 			/*Конструктор с параметрами <cObject, текущая наполненность, текущий размер>*/
-public:		cTank(cObject *value, int in_filling, int in_size);
+public:		cTank(const cObject *value, int in_filling, int in_size);
 	//Деструктор
 public:		virtual ~cTank();
 
@@ -30,7 +30,7 @@ public:		int getSize() const;
 
 	//Перегрузки операторов
 			/*Перегрузка оператора сложения, цели испольхования 1) слив двух баков в один*/
-public:		cTank* operator+(const cTank &value);
+public:		friend const cTank* operator+(const cTank& left, const cTank& right);
 	//Перегруженные методы от наследника
 			/*Чтение параметров цистерны с файла*/
 public:		virtual map< string, string > *readFile();

@@ -15,7 +15,7 @@ private:	int armor;
 
 	//Конструкторы
 public:		cUnit();
-public:		cUnit(cObject *value, int armor_value);
+public:		cUnit(const cObject *value, int armor_value);
 public:		cUnit(const cUnit &value);
 	//Деструктор
 public:		virtual ~cUnit();
