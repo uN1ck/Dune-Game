@@ -1,7 +1,10 @@
 #pragma once
 #include "cObject.h"
+#include "iAssignable.h"
+
 class cTank :
-	public cObject
+	public cObject,
+	public iAssignable
 {
 	//Поля
 private:	int filling;
@@ -30,10 +33,15 @@ public:		int getSize() const;
 
 	//Перегрузки операторов
 			/*Перегрузка оператора сложения, цели испольхования 1) слив двух баков в один*/
-public:		friend const cTank* operator+(const cTank& left, const cTank& right);
+public:		friend cTank* operator+(const cTank& left, const cTank& right);
+			/*Оператор присвоения*/
+public:		virtual cTank* operator=(const cTank &value);
+
 	//Перегруженные методы от наследника
 			/*Чтение параметров цистерны с файла*/
 public:		virtual map< string, string > *readFile();
+			/*Метод приведения класса к строке*/
+public:		virtual string toString();
 
 };
 

@@ -78,7 +78,6 @@
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cTank.h" />
     <ClInclude Include="cUnit.h" />
-    <ClInclude Include="iAssignable.h" />
     <ClInclude Include="iClonable.h" />
     <ClInclude Include="iStringable.h" />
     <ClInclude Include="iUpdateble.h" />

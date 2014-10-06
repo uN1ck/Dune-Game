@@ -67,3 +67,12 @@ string cObject::toString()
 cObject::~cObject()
 {
 }
+
+cObject* cObject::operator=(const cObject &value)
+{
+	if (this == &value)
+		return this;
+	this->setName(value.getName());
+	this->setDescription(value.getDescription());
+	return this;
+}

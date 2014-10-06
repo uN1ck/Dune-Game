@@ -70,8 +70,5 @@
     <ClInclude Include="cUnit.h">
       <Filter>Заголовочные файлы\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="iAssignable.h">
-      <Filter>Заголовочные файлы\Interfaces</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
