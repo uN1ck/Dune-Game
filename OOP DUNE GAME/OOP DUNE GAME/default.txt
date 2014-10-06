@@ -1,2 +1,5 @@
-Name defaultName
-Description defaultDescription
+#Name DefaultName
+#Description defaultDescription
+#Armor 5
+#TankSize 13
+#TankFilling 20

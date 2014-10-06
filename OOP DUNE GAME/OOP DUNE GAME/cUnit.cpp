@@ -1,7 +1,7 @@
 #include "cUnit.h"
 
 //Set-Get методы класса
-bool	cUnit::IsFying() const
+bool	cUnit::getFlying() const
 {
 	return isFlying;
 }
@@ -10,7 +10,7 @@ int		cUnit::getArmor() const
 	return armor;
 }
 
-void cUnit::IsFlying(bool value)
+void cUnit::setFlying(bool value)
 {
 	this->isFlying = value;
 }
@@ -34,7 +34,7 @@ cUnit::cUnit() : cObject()
 {
 	this->setArmor(5);
 }
-cUnit::cUnit(cObject* value, int armor_value) : cObject(*value)
+cUnit::cUnit(const cObject* value, int armor_value) : cObject(*value)
 {
 	this->setArmor(armor_value);
 }
@@ -55,4 +55,14 @@ cObject* cUnit::clone()
 {
 	cObject *cloned = new cUnit(*this);
 	return cloned;
+}
+
+cUnit* cUnit::operator=(const cUnit &value)
+{
+	if (this == &value)
+		return this;
+	(cObject)*this = value;
+	this->setArmor(value.getArmor());
+	this->setFlying(value.getFlying());
+	return this;
 }

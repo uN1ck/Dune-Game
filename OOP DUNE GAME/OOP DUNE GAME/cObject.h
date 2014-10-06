@@ -41,9 +41,13 @@ protected:	virtual void setDescription(const string &in_description);
 public:		string getName()const;
 			/*Взять описание обьекта*/
 public:		string getDescription()const;
+//Перегрузка оператора присовения
+			/*Оператор присвоения*/
+public:		virtual cObject* operator=(const cObject &value);
+
 //Интерфейсные методы
 			/*Метод приведения типа к строке*/
-public:		string toString();
+public:		virtual string toString();
 
 
 };

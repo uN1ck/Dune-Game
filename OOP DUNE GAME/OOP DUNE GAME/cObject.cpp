@@ -15,7 +15,7 @@ map< string, string >* cObject::readFile()
 	}
 	in_stream.close();
 	this->setName(file->find("#Name")->second);
-	this->setName(file->find("#Description")->second);
+	this->setDescription(file->find("#Description")->second);
 
 	return file;
 }
@@ -45,7 +45,6 @@ cObject::cObject()
 {
 	this->setName("Default Initialization");
 	this->setDescription("Default Initialization");
-	this->readFile();
 }
 cObject::cObject(const cObject &in_object) 
 {
@@ -66,4 +65,13 @@ string cObject::toString()
 //Деструктор
 cObject::~cObject()
 {
+}
+
+cObject* cObject::operator=(const cObject &value)
+{
+	if (this == &value)
+		return this;
+	this->setName(value.getName());
+	this->setDescription(value.getDescription());
+	return this;
 }
