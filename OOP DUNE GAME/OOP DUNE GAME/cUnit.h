@@ -5,8 +5,7 @@
 
 class cUnit :
 	public cObject,
-	public iClonable,
-	public iStringable
+	public iClonable
 
 {
 	//Поля

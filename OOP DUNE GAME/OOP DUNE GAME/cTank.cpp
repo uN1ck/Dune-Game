@@ -3,8 +3,8 @@
 
 cTank::cTank() : cObject()
 {
-	this->setFilling(0);
 	this->setSize(10);
+	this->setFilling(0);
 }
 cTank::cTank(const cTank& value) : cObject(value)
 {
@@ -38,8 +38,8 @@ int cTank::getSize() const
 map <string, string> *cTank::readFile()
 {
 	map <string, string> * file = ((cObject*)this)->readFile();
-	this->setSize(atoi(file->find("#TankSize")->second.c_str()));
-	this->setFilling(atoi(file->find("#TankFilling")->second.c_str()));
+	this->setSize( atoi(file->find("#TankSize")->second.c_str()) );
+	this->setFilling( atoi(file->find("#TankFilling")->second.c_str()) );
 	return file;
 }
 
@@ -59,4 +59,9 @@ cTank* cTank::operator=(const cTank &value)
 }
 cTank::~cTank()
 {
+}
+
+string cTank::toString()
+{
+	return cObject::toString() + "#TankFilling " + to_string(this->getFilling()) + "\n#TankSize " + to_string(this->getSize()) + "\n";
 }

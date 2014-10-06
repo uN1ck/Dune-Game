@@ -31,7 +31,7 @@ int main()
 	showMe(t_object);
 	cTank *t_copy = new cTank(*t_default);
 	showMe(t_copy);
-	t_default = *t_default + *t_object;
+	t_default = *t_object + *t_object;
 	showMe(t_default);
 	t_default = t_copy;
 	showMe(t_default);

@@ -1,10 +1,8 @@
 #pragma once
 #include "cObject.h"
-#include "iAssignable.h"
 
 class cTank :
-	public cObject,
-	public iAssignable
+	public cObject
 {
 	//Поля
 private:	int filling;
