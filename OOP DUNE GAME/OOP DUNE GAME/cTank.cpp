@@ -43,19 +43,25 @@ map <string, string> *cTank::readFile()
 	return file;
 }
 
-cTank* operator+(const cTank& left, const cTank& right)
+cTank operator+(const cTank& left, const cTank& right)
 {
-	return new cTank(&left, left.getFilling()+right.getFilling(), left.getSize());
+	return cTank(&left, left.getFilling()+right.getFilling(), left.getSize());
 }
 
-cTank* cTank::operator=(const cTank &value)
+cTank& cTank::operator++()
+{
+	this->setFilling(this->getFilling() + 1);
+	return *this;
+}
+
+cTank& cTank::operator=(const cTank &value)
 {
 	if (this == &value)
-		return this;
+		return *this;
 	(cObject)*this = value;
 	this->setFilling(value.getFilling());
 	this->setSize(value.getSize());
-	return this;
+	return *this;
 }
 cTank::~cTank()
 {

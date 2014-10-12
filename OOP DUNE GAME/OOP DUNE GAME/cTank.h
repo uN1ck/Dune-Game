@@ -31,10 +31,11 @@ public:		int getSize() const;
 
 	//Перегрузки операторов
 			/*Перегрузка оператора сложения, цели испольхования 1) слив двух баков в один*/
-public:		friend cTank* operator+(const cTank& left, const cTank& right);
+public:		friend cTank operator+(const cTank& left, const cTank& right);
 			/*Оператор присвоения*/
-public:		virtual cTank* operator=(const cTank &value);
-
+public:		virtual cTank& operator=(const cTank &value);
+			/*Оператор инкримента, используется для погшагового заполнения*/
+public:		virtual cTank& operator++();
 	//Перегруженные методы от наследника
 			/*Чтение параметров цистерны с файла*/
 public:		virtual map< string, string > *readFile();
