@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cCell.cpp" />
     <ClCompile Include="cGun.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cTank.cpp" />
@@ -74,6 +75,7 @@
     <Text Include="default.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cCell.h" />
     <ClInclude Include="cGun.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cTank.h" />
