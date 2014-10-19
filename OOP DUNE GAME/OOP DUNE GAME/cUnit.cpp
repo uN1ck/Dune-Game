@@ -34,7 +34,7 @@ cUnit::cUnit() : cObject()
 {
 	this->setArmor(5);
 }
-cUnit::cUnit(const cObject* value, int armor_value) : cObject(*value)
+cUnit::cUnit(const cObject& value, int armor_value) : cObject(value)
 {
 	this->setArmor(armor_value);
 }

@@ -48,6 +48,9 @@
     <ClCompile Include="cCell.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="cWorld.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="iClonable.h">
@@ -72,6 +75,9 @@
       <Filter>Заголовочные файлы\Classes</Filter>
     </ClInclude>
     <ClInclude Include="cCell.h">
+      <Filter>Заголовочные файлы\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="cWorld.h">
       <Filter>Заголовочные файлы\Classes</Filter>
     </ClInclude>
   </ItemGroup>

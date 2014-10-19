@@ -14,7 +14,7 @@ public:		cTank();
 			/*Конструктор копирования объекта*/
 public:		cTank(const cTank& value);
 			/*Конструктор с параметрами <cObject, текущая наполненность, текущий размер>*/
-public:		cTank(const cObject *value, int in_filling, int in_size);
+public:		cTank(const cObject &value, int in_filling, int in_size);
 	//Деструктор
 public:		virtual ~cTank();
 

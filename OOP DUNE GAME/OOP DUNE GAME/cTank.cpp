@@ -11,7 +11,7 @@ cTank::cTank(const cTank& value) : cObject(value)
 	this->setSize(value.getSize());
 	this->setFilling(value.getFilling());
 }
-cTank::cTank(const cObject *value, int in_filling, int in_size) : cObject(*value)
+cTank::cTank(const cObject &value, int in_filling, int in_size) : cObject(value)
 {
 	this->setSize(in_size);
 	this->setFilling(in_filling);
@@ -45,7 +45,7 @@ map <string, string> *cTank::readFile()
 
 cTank operator+(const cTank& left, const cTank& right)
 {
-	return cTank(&left, left.getFilling()+right.getFilling(), left.getSize());
+	return cTank(left, left.getFilling()+right.getFilling(), left.getSize());
 }
 
 cTank& cTank::operator++()
@@ -56,11 +56,12 @@ cTank& cTank::operator++()
 
 cTank& cTank::operator=(const cTank &value)
 {
-	if (this == &value)
-		return *this;
-	(cObject)*this = value;
-	this->setFilling(value.getFilling());
-	this->setSize(value.getSize());
+	if (this != &value)
+	{
+		(cObject)*this = value;
+		this->setFilling(value.getFilling());
+		this->setSize(value.getSize());
+	}
 	return *this;
 }
 cTank::~cTank()
