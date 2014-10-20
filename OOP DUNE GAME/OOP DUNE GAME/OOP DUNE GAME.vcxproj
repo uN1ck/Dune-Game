@@ -65,8 +65,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cCell.cpp" />
+    <ClCompile Include="cController.cpp" />
     <ClCompile Include="cGun.cpp" />
+    <ClCompile Include="cGunner.cpp" />
     <ClCompile Include="cObject.cpp" />
+    <ClCompile Include="cSpiceCollector.cpp" />
     <ClCompile Include="cTank.cpp" />
     <ClCompile Include="cUnit.cpp" />
     <ClCompile Include="cWorld.cpp" />
@@ -77,8 +80,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cCell.h" />
+    <ClInclude Include="cController.h" />
     <ClInclude Include="cGun.h" />
+    <ClInclude Include="cGunner.h" />
     <ClInclude Include="cObject.h" />
+    <ClInclude Include="cSpiceCollector.h" />
     <ClInclude Include="cTank.h" />
     <ClInclude Include="cUnit.h" />
     <ClInclude Include="cWorld.h" />

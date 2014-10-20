@@ -1,13 +1,17 @@
 #include "cCell.h"
 
-bool cCell::setUnit(const cUnit *unit) const
+bool cCell::putUnit( cUnit *unit) 
 {
 	if (!this->getUnit())
 	{
-		this->setUnit(unit);
+		this->unit = unit;
 		return true;
 	}
 	return false;
+}
+void  cCell::setUnit(cUnit *unit)
+{
+	this->unit = unit;
 }
 cUnit* cCell::getUnit()const
 {
@@ -20,20 +24,10 @@ cUnit* cCell::pickUnit()
 	return res;
 }
 
-void cCell::setDeckElement(cObject *value, int index)
+vector<cObject*>& cCell::getDeckLink()
 {
-	if (index < this->deck.size())
-		this->deck[index] = value;
-	else
-		this->deck.push_back(value);
+	return this->deck;
 }
-cObject* cCell::getDeckElement(const int index) const
-{
-	if (index < this->deck.size())
-		return this->deck[index];
-	return NULL;
-}
-
 void cCell::setDeck(vector<cObject*> value)
 {
 	this->deck = value;
@@ -47,23 +41,43 @@ string cCell::toString()
 {
 	string res;
 	res = res + cObject::toString() +"Unit:" + ((this->getUnit())? this->getUnit()->toString():"Empty") + this->getSpice()->toString();
-	for (int i = 0; i < this->getSize(); i++)
-		res = res + " Loot list item -> " + this->getDeckElement(i)->toString();
+	for (int i = 0; i < this->getDeck().size(); i++)
+		res = res + " Loot list item -> " + this->getDeck()[i]->toString();
 	return res;
 }
 map< string, string >* cCell::readFile()
 {
 	map< string, string > *file = cObject::readFile();
-	//Дописать считывание для карты!
+
 	return file;
 }
 
-cCell::cCell() : cObject()
+void cCell::Update()
 {
-	unit = (((rand() % 1000) < 100) ? new cUnit(cObject("Rock", "The Rock"), 100000) : NULL);
-	deck = vector<cObject*> (0);
-	int value = rand()%100;
-	spice = new cTank( cObject("Spicefield", "The field with spice"), value, value);
+	
+}
+
+void cCell::generate(int rockChance, int rockRand, int spiceConut)
+{
+	if (rand() % rockRand < rockChance)
+	{
+		this->isRock = 1;
+		this->setDescription(this->getDescription() + ", contains Rock");
+	}
+	else
+	{
+		this->isRock = 1;
+		this->setDescription(this->getDescription() + ", does not contains Rock");
+	}
+	this->setSpice(new cTank(cObject("The spicefield", "Spicefield with some spice inside"), rand() % spiceCount, spiceCount));
+}
+
+cCell::cCell(): cObject()
+{
+	this->isRock = NULL;
+	unit = NULL;
+	deck = vector<cObject*>(NULL);
+	spice = NULL;
 }
 cCell::cCell(const cCell &value) : cObject(value)
 {
