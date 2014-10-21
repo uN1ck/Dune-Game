@@ -34,8 +34,6 @@ public:		int getSize() const;
 public:		friend cTank operator+(const cTank& left, const cTank& right);
 			/*Оператор присвоения*/
 public:		virtual cTank& operator=(const cTank &value);
-			/*Оператор инкримента, используется для погшагового заполнения*/
-public:		virtual cTank& operator++();
 	//Перегруженные методы от наследника
 			/*Чтение параметров цистерны с файла*/
 public:		virtual map< string, string > *readFile();

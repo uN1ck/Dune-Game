@@ -48,11 +48,6 @@ cTank operator+(const cTank& left, const cTank& right)
 	return cTank(&left, left.getFilling()+right.getFilling(), left.getSize());
 }
 
-cTank& cTank::operator++()
-{
-	this->setFilling(this->getFilling() + 1);
-	return *this;
-}
 
 cTank& cTank::operator=(const cTank &value)
 {

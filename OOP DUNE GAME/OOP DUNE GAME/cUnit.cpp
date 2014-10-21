@@ -43,6 +43,11 @@ cUnit::cUnit(const cUnit &value) : cObject(value)
 	this->setArmor(value.getArmor());
 }
 
+void cUnit::Update(cObject *cell, cObject *world)
+{
+
+}
+
 cUnit::~cUnit()
 {
 }
@@ -59,10 +64,11 @@ cObject* cUnit::clone()
 
 cUnit* cUnit::operator=(const cUnit &value)
 {
-	if (this == &value)
-		return this;
-	(cObject)*this = value;
-	this->setArmor(value.getArmor());
-	this->setFlying(value.getFlying());
+	if (this != &value)
+	{
+		(cObject)*this = value;
+		this->setArmor(value.getArmor());
+		this->setFlying(value.getFlying());
+	}
 	return this;
 }

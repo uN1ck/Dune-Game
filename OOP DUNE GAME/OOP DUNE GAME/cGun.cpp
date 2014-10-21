@@ -36,7 +36,7 @@ cGun::cGun(const cGun &value) : cObject(value)
 	this->setDamage(value.getDamage());
 	this->setDistance(value.getDistance());
 }
-cGun::cGun(cObject *value, int distance_value, int damage_value) : cObject(*value)
+cGun::cGun(const cObject &value, int distance_value, int damage_value) : cObject(value)
 {
 	this->setDistance(distance_value);
 	this->setDamage(damage_value);

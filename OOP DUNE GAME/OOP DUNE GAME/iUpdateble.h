@@ -1,8 +1,8 @@
 #pragma once
-
+#include "cObject.h"
 /*Интерфейс обновляемого класса*/
 class iUpdateble
 {
 /*Метод обновления класса*/
-public:		virtual void Update() = 0;
+public:		virtual void Update(cObject *cell, cObject *world) = 0;
 };

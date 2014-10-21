@@ -9,7 +9,8 @@ class cGun :
 public:		cGun();
 			/*Конструктор копирования объекта*/
 public:		cGun(const cGun &value);
-public:		cGun(cObject *value, int distance_value, int damage_value);
+			/*Конструктор объекта с параметрами*/
+public:		cGun(const cObject &value, int distance_value, int damage_value);
 	//Деструкторы
 public:		virtual ~cGun();
 
@@ -27,9 +28,8 @@ private:	void setDistance(const int value);
 private:	void setDamage(const int value);
 
 	// Перегруженные от наследника методы
-			/*Чтение параметров {armor и предка} из файла*/
+			/*Чтение параметров из файла*/
 public:		virtual map< string, string > *readFile();
-
-
+			
 };
 

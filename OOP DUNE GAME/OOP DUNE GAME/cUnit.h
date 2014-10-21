@@ -1,11 +1,12 @@
 #pragma once
 #include "cObject.h"
 #include "iClonable.h"
-#include "iStringable.h"
+#include "iUpdateble.h"
 
 class cUnit :
 	public cObject,
-	public iClonable
+	public iClonable,
+	public iUpdateble
 
 {
 	//Поля
@@ -46,5 +47,6 @@ public:		virtual map< string, string > *readFile();
 			/*Оператор присвоения*/
 public:		virtual cUnit* operator=(const cUnit &value);
 
+public:		virtual void Update(cObject *cell, cObject *world);
 };
 
