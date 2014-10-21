@@ -1,8 +1,10 @@
 #pragma once
 #include "cUnit.h"
+#include "cCell.h"
+#include "cWorld.h"
 #include "cTank.h"
 
-class cSpiceCollector :
+class cTanker :
 	public cUnit
 {
 	/*Поля*/
@@ -13,17 +15,16 @@ private:	 cTank *tank;
 public:		 cTank* getTank() const;
 			 /*Задать цистерну*/
 public:		 void setTank(cTank *value);
-			 /*взять ссылку на цистерну*/
-public:		 cTank& getTankLink();
 
 	/*Конструктор объекта по умолчанию*/
-public:		cSpiceCollector();
+public:		cTanker();
 			/*Конструктор cUnit с параметрами <Базовый класс, броня>*/
-public:		cSpiceCollector(const cUnit &value, const cTank &in_tank);
+public:		cTanker(const cUnit &value,cTank *in_tank);
 			/*Конструктор копирования*/
-public:		cSpiceCollector(const cSpiceCollector &value);
+public:		cTanker(const cTanker &value);
 
-	
-	~cSpiceCollector();
+public:		virtual void Update(cCell *cell = 0, cWorld *world = 0);
+
+public:		virtual~cTanker();
 };
 

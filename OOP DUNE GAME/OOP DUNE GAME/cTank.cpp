@@ -35,6 +35,15 @@ int cTank::getSize() const
 	return this->size;
 }
 
+bool cTank::isFull() const
+{
+	return this->getFilling() == this->getSize();
+}
+bool cTank::isEmpty() const
+{
+	return !this->getFilling();
+}
+
 map <string, string> *cTank::readFile()
 {
 	map <string, string> * file = ((cObject*)this)->readFile();

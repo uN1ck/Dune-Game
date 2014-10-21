@@ -54,26 +54,26 @@
     <ClCompile Include="cUnit.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="cCell.cpp">
+    <ClCompile Include="cController.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="cGunner.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="cTanker.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
     <ClCompile Include="cWorld.cpp">
-      <Filter>Файлы исходного кода\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="cSpiceCollector.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="cController.cpp">
+    <ClCompile Include="cCell.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="cGunner.cpp">
+    <ClCompile Include="cField.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="iClonable.h">
-      <Filter>Заголовочные файлы\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="iStringable.h">
       <Filter>Заголовочные файлы\Interfaces</Filter>
     </ClInclude>
@@ -82,15 +82,6 @@
     </ClInclude>
     <ClInclude Include="cObject.h">
       <Filter>Заголовочные файлы\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="cSpiceCollector.h">
-      <Filter>Заголовочные файлы\Classes\Units</Filter>
-    </ClInclude>
-    <ClInclude Include="cWorld.h">
-      <Filter>Заголовочные файлы\Classes\World</Filter>
-    </ClInclude>
-    <ClInclude Include="cCell.h">
-      <Filter>Заголовочные файлы\Classes\World</Filter>
     </ClInclude>
     <ClInclude Include="cUnit.h">
       <Filter>Заголовочные файлы\Classes\Units</Filter>
@@ -106,6 +97,24 @@
     </ClInclude>
     <ClInclude Include="cGunner.h">
       <Filter>Заголовочные файлы\Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="hDuneGame.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="cTanker.h">
+      <Filter>Заголовочные файлы\Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="cCell.h">
+      <Filter>Заголовочные файлы\Classes\World</Filter>
+    </ClInclude>
+    <ClInclude Include="cWorld.h">
+      <Filter>Заголовочные файлы\Classes\World</Filter>
+    </ClInclude>
+    <ClInclude Include="cField.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="iClonable.h">
+      <Filter>Заголовочные файлы\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

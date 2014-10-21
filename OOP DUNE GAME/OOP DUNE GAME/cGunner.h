@@ -1,5 +1,7 @@
 #pragma once
 #include "cUnit.h"
+#include "cCell.h"
+#include "cWorld.h"
 #include "cGun.h"
 
 class cGunner :
@@ -13,16 +15,17 @@ private:	 cGun* gun;
 public:		 cGun* getGun() const;
 			 /*Задать оружие*/
 public:		 void setGun(cGun *value);
-			 /*Взять ссылку на оружие*/
-public:		 cGun& getGunLink();
+
 
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
 public:		cGunner();
 			/*Конструктор cUnit с параметрами <Базовый класс, броня>*/
-public:		cGunner(const cGunner &value, const cGun &in_gun);
+public:		cGunner(const cUnit &value, cGun *in_gun);
 			/*Конструктор копирования*/
 public:		cGunner(const cGunner &value);
+
+public:		virtual void Update(cCell *cell = 0, cWorld *world = 0);
 
 public:		~cGunner();
 };

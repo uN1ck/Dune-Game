@@ -1,12 +1,16 @@
 #pragma once
 #include "cObject.h"
 #include "iClonable.h"
-#include "iStringable.h"
+#include "iUpdateble.h"
 #include "cController.h"
+
+#include <string>
+#include <map>
 
 class cUnit :
 	public cObject,
-	public iClonable
+	public iClonable,
+	public iUpdateble
 
 {
 	/*Поля*/
@@ -37,8 +41,9 @@ public:		virtual void addArmor(int value);
 			/*Задать измененение брони*/
 private:	void setArmor(int value);
 			/*Задать контроллер юнита*/
-public:		cController* getController()const;
-
+public:		virtual cController* getController()const;
+			/*Вернуть ссылку на себя*/
+public:		virtual cUnit& getLink();
 	/*Интерфейсные методы*/
 			//Приведенеи к строке
 public:		virtual string toString();
@@ -49,6 +54,8 @@ public:		virtual cObject* clone();
 public:		virtual map< string, string > *readFile();
 			/*Оператор присвоения*/
 public:		virtual cUnit* operator=(const cUnit &value);
+			/*Метод обновления обьекта*/
+public:		virtual void Update(cCell *cell_value, cWorld *world_value);
 
 };
 

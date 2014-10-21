@@ -1,5 +1,6 @@
 #pragma once
 #include "cObject.h"
+
 class cController :
 	public cObject
 {

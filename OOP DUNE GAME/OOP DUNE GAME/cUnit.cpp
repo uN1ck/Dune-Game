@@ -22,6 +22,12 @@ void cUnit::setArmor(int value)
 {
 	this->armor = value;
 }
+cUnit& cUnit::getLink()
+{
+	return *this;
+}
+
+void cUnit::Update(cCell *cell_value, cWorld *world_value){}
 
 map <string, string> *cUnit::readFile()
 {
@@ -41,6 +47,11 @@ cUnit::cUnit(const cObject& value, int armor_value) : cObject(value)
 cUnit::cUnit(const cUnit &value) : cObject(value)
 {
 	this->setArmor(value.getArmor());
+}
+
+cController* cUnit::getController() const
+{
+	return this->controller;
 }
 
 cUnit::~cUnit()
