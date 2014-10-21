@@ -1,5 +1,7 @@
 #pragma once
 #include "cObject.h"
+#include <map>
+#include <string>
 
 class cGun :
 	public cObject

@@ -1,0 +1,30 @@
+#pragma once
+#include "cUnit.h"
+#include "cCell.h"
+#include "cWorld.h"
+#include "cTank.h"
+
+class cTanker :
+	public cUnit
+{
+	/*Поля*/
+			 /*полес цистерной спайса*/
+private:	 cTank *tank;
+
+			 /*Взять цистерну*/
+public:		 cTank* getTank() const;
+			 /*Задать цистерну*/
+public:		 void setTank(cTank *value);
+
+	/*Конструктор объекта по умолчанию*/
+public:		cTanker();
+			/*Конструктор cUnit с параметрами <Базовый класс, броня>*/
+public:		cTanker(const cUnit &value,cTank *in_tank);
+			/*Конструктор копирования*/
+public:		cTanker(const cTanker &value);
+
+public:		virtual void Update(cCell *cell = 0, cWorld *world = 0);
+
+public:		virtual~cTanker();
+};
+
