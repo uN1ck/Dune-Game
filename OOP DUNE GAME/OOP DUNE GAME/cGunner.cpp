@@ -12,7 +12,7 @@ void cGunner::setGun(cGun *value)
 
 cGunner::cGunner() : cUnit(cObject("Standart Gunner", "Standart gunner without any upgrades"), 10)
 {
-	this->gun = new cGun(&cObject("Standart Gunner", "Standart Gunner with gun"),0,1);
+	this->gun = new cGun(cObject("Standart Gunner", "Standart Gunner with gun"),0,1);
 }
 cGunner::cGunner(const cUnit &value, cGun *in_gun) : cUnit(value)
 {
@@ -27,7 +27,7 @@ cGunner::~cGunner()
 {
 	delete this->gun;
 }
-void cGunner::Update(cCell *cell, cWorld *world)
+void cGunner::Update(cObject *cell, cObject *world)
 {
 	/*Место для стрельбы*/
 	/*Место отработки интелекта*/

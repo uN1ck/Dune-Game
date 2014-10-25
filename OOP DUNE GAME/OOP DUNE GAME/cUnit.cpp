@@ -14,10 +14,6 @@ void cUnit::setFlying(bool value)
 {
 	this->isFlying = value;
 }
-void cUnit::addArmor(int value)
-{
-	this->armor += value;
-}
 void cUnit::setArmor(int value)
 {
 	this->armor = value;
@@ -34,7 +30,7 @@ cUnit::cUnit() : cObject()
 {
 	this->setArmor(5);
 }
-cUnit::cUnit(const cObject* value, int armor_value) : cObject(*value)
+cUnit::cUnit(const cObject& value, int armor_value) : cObject(value)
 {
 	this->setArmor(armor_value);
 }

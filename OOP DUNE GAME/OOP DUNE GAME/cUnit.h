@@ -17,7 +17,7 @@ private:	int armor;
 			/*Конструктор объекта по умолчанию*/
 public:		cUnit();
 			/*Конструктор cUnit с параметрами <Базовый класс, броня>*/
-public:		cUnit(const cObject *value, int armor_value);
+public:		cUnit(const cObject &value, int armor_value);
 			/*Конструктор копирования*/
 public:		cUnit(const cUnit &value);
 	//Деструктор
@@ -32,9 +32,7 @@ public:		int	getArmor() const;
 			/*Задать нахождени еобьекта в воздухе или на земле*/
 public:		virtual void setFlying(bool value);
 			/*Задать абсолютное значение брони*/
-public:		virtual void addArmor(int value);
-			/*Задать измененение брони*/
-private:	void setArmor(int value);
+public:		void setArmor(int value);
 
 	//  Интерфейсные методы
 			//Приведенеи к строке

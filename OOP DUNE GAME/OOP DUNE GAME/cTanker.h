@@ -23,7 +23,7 @@ public:		cTanker(const cUnit &value,cTank *in_tank);
 			/*Конструктор копирования*/
 public:		cTanker(const cTanker &value);
 
-public:		virtual void Update(cCell *cell = 0, cWorld *world = 0);
+public:		virtual void Update(cObject *cell, cObject *world);
 
 public:		virtual~cTanker();
 };
