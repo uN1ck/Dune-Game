@@ -12,6 +12,7 @@ class cUnit :
 	//Поля
 private:	bool isFlying;
 private:	int armor;
+private:	int cost;
 
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -29,6 +30,9 @@ public:		bool getFlying() const;
 			/*Взять текущее значение брони*/
 public:		int	getArmor() const;
 
+public:		int getCost();
+public:		virtual void setCost(int value);
+
 			/*Задать нахождени еобьекта в воздухе или на земле*/
 public:		virtual void setFlying(bool value);
 			/*Задать абсолютное значение брони*/
@@ -42,8 +46,6 @@ public:		virtual cObject* clone();
 	// Перегруженные от наследника методы
 			/*Чтение параметров {armor и предка} из файла*/
 public:		virtual map< string, string > *readFile();
-			/*Оператор присвоения*/
-public:		virtual cUnit* operator=(const cUnit &value);
 
 public:		virtual void Update(cObject *cell, cObject *world);
 };

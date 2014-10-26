@@ -1,7 +1,5 @@
 #pragma once
 #include "cUnit.h"
-#include "cCell.h"
-#include "cWorld.h"
 #include "cGun.h"
 
 class cGunner :

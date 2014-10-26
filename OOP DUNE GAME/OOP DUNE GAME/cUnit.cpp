@@ -58,13 +58,11 @@ cObject* cUnit::clone()
 	return cloned;
 }
 
-cUnit* cUnit::operator=(const cUnit &value)
+void cUnit::setCost(int value)
 {
-	if (this != &value)
-	{
-		(cObject)*this = value;
-		this->setArmor(value.getArmor());
-		this->setFlying(value.getFlying());
-	}
-	return this;
+	this->cost = value;
+}
+int cUnit::getCost()
+{
+	return this->cost;
 }
