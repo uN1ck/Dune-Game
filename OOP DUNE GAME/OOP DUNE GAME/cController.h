@@ -7,5 +7,6 @@ class cController :
 public:
 	cController();
 	virtual ~cController();
+protected:	virtual void setID();
 };
 

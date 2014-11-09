@@ -5,6 +5,7 @@
 #include <string>
 #include "iStringable.h"
 #include <map>
+
 using namespace std;
 
 
@@ -14,6 +15,7 @@ class cObject :
 //Поля
 private:	string name;
 private:	string description;
+protected:	string ID;
 
 		//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -49,6 +51,8 @@ public:		virtual cObject* operator=(const cObject &value);
 			/*Метод приведения типа к строке*/
 public:		virtual string toString();
 
+public:		string getID() const;
+protected:	virtual void setID();
 
 };
 

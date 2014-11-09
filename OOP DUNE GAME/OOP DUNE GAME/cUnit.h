@@ -2,6 +2,7 @@
 #include "cObject.h"
 #include "iClonable.h"
 #include "iUpdateble.h"
+#include "../WIN32DUNEGAME/stdafx.h"
 
 class cUnit :
 	public cObject,
@@ -36,7 +37,7 @@ public:		virtual void setCost(int value);
 			/*Задать нахождени еобьекта в воздухе или на земле*/
 public:		virtual void setFlying(bool value);
 			/*Задать абсолютное значение брони*/
-public:		void setArmor(int value);
+public:		virtual void setArmor(int value);
 
 	//  Интерфейсные методы
 			//Приведенеи к строке
@@ -46,7 +47,7 @@ public:		virtual cObject* clone();
 	// Перегруженные от наследника методы
 			/*Чтение параметров {armor и предка} из файла*/
 public:		virtual map< string, string > *readFile();
-
 public:		virtual void Update(cObject *cell, cObject *world);
+protected:	virtual void setID();
 };
 

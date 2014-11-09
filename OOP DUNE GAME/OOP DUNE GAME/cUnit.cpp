@@ -29,14 +29,17 @@ map <string, string> *cUnit::readFile()
 cUnit::cUnit() : cObject()
 {
 	this->setArmor(5);
+	this->setID();
 }
 cUnit::cUnit(const cObject& value, int armor_value) : cObject(value)
 {
 	this->setArmor(armor_value);
+	this->setID();
 }
 cUnit::cUnit(const cUnit &value) : cObject(value)
 {
 	this->setArmor(value.getArmor());
+	this->setID();
 }
 
 void cUnit::Update(cObject *cell, cObject *world)
@@ -50,7 +53,7 @@ cUnit::~cUnit()
 
 string cUnit::toString()
 {
-	return cObject::toString() + "#Armor " + to_string(this->getArmor()) + "\n";
+	return cObject::toString() + "#Armor " + to_string(this->getArmor()) + "\n#ID |" + this->getID() + "|\n";
 }
 cObject* cUnit::clone()
 {
@@ -65,4 +68,9 @@ void cUnit::setCost(int value)
 int cUnit::getCost()
 {
 	return this->cost;
+}
+
+void cUnit::setID()
+{
+	this->ID = typeid(this).name();
 }

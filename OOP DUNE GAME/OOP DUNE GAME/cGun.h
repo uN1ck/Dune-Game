@@ -2,6 +2,7 @@
 #include "cObject.h"
 #include <map>
 #include <string>
+#include "../WIN32DUNEGAME/stdafx.h"
 
 class cGun :
 	public cObject
@@ -32,6 +33,9 @@ private:	void setDamage(const int value);
 	// Перегруженные от наследника методы
 			/*Чтение параметров из файла*/
 public:		virtual map< string, string > *readFile();
+protected:	virtual void setID();
 			
+public:		virtual string toString();
+
 };
 

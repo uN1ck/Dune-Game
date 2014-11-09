@@ -1,6 +1,7 @@
 #pragma once
 #include "cUnit.h"
 #include "cGun.h"
+#include "../WIN32DUNEGAME/stdafx.h"
 
 class cGunner :
 	public cUnit
@@ -26,5 +27,8 @@ public:		cGunner(const cGunner &value);
 public:		virtual void Update(cObject *cell, cObject *world);
 
 public:		~cGunner();
+protected:	virtual void setID();
+
+public:		virtual string toString();
 };
 

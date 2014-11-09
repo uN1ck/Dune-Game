@@ -1,4 +1,5 @@
 #include "cObject.h"
+#include <typeinfo>
 
 //Файловые методы класса
 map< string, string >* cObject::readFile()
@@ -45,16 +46,20 @@ cObject::cObject()
 {
 	this->setName("Default Initialization");
 	this->setDescription("Default Initialization");
+	this->setID();
+	
 }
 cObject::cObject(const cObject &in_object) 
 {
 	this->setName(in_object.getName());
 	this->setDescription(in_object.getDescription());
+	this->setID();
 }
 cObject::cObject(const string in_name, const string in_description) 
 {
 	this->setName(in_name);
 	this->setDescription(in_description);
+	this->setID();
 }
 
 //Интерфейсные методы
@@ -74,4 +79,13 @@ cObject* cObject::operator=(const cObject &value)
 	this->setName(value.getName());
 	this->setDescription(value.getDescription());
 	return this;
+}
+
+string cObject::getID()const
+{
+	return this->ID;
+}
+void cObject::setID()
+{
+	this->ID = typeid(this).name();
 }

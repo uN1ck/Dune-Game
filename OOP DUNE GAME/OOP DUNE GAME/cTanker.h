@@ -1,6 +1,7 @@
 #pragma once
 #include "cUnit.h"
 #include "cTank.h"
+#include "../WIN32DUNEGAME/stdafx.h"
 
 class cTanker :
 	public cUnit
@@ -24,5 +25,8 @@ public:		cTanker(const cTanker &value);
 public:		virtual void Update(cObject *cell, cObject *world);
 
 public:		virtual~cTanker();
+protected:	virtual void setID();
+
+public:		virtual string toString();
 };
 

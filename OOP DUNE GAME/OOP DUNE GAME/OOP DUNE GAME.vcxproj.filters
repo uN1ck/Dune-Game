@@ -5,35 +5,46 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Заголовочные файлы">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Файлы ресурсов">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Заголовочные файлы\Interfaces">
-      <UniqueIdentifier>{b0c8531f-4f46-4178-81b4-adbac04462e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Заголовочные файлы\Classes">
-      <UniqueIdentifier>{2f0fe8fb-0119-48ab-a6c5-510013776f8e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Файлы исходного кода\Main Exetucable">
       <UniqueIdentifier>{48b1856f-0e18-4365-9015-6548f38ca694}</UniqueIdentifier>
     </Filter>
     <Filter Include="Файлы исходного кода\Classes">
-      <UniqueIdentifier>{bc5afb26-c932-4543-acaa-1053db753b45}</UniqueIdentifier>
+      <UniqueIdentifier>{3642db21-deae-4fad-ab57-8e60dc39c391}</UniqueIdentifier>
     </Filter>
     <Filter Include="Файлы ресурсов\Descriptions">
-      <UniqueIdentifier>{110fe800-dba4-419d-a8ee-cb5d59e3d449}</UniqueIdentifier>
+      <UniqueIdentifier>{3fde29ad-b8b3-40f7-baf6-16c877330f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{e7fac5ed-4830-46a0-86d8-f363069db9af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Interfaces">
+      <UniqueIdentifier>{08f352c3-6a22-4805-a5dd-1dc232ff000d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Classes">
+      <UniqueIdentifier>{7df2354d-cb3f-4576-b575-1a9ec536b0b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Classes\Units">
+      <UniqueIdentifier>{62ce7ec0-49e6-484e-99a1-787465a6f73e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Classes\UnitParts">
+      <UniqueIdentifier>{df27dc25-be40-43cc-9ba0-9e3b633d6d36}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Файлы исходного кода\Main Exetucable</Filter>
     </ClCompile>
+    <ClCompile Include="cController.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="cGun.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="cGunner.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
     <ClCompile Include="cObject.cpp">
@@ -42,8 +53,17 @@
     <ClCompile Include="cTank.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="cTanker.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="cUnit.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="cBase.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="cWorld.cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,18 +76,31 @@
     <ClInclude Include="iUpdateble.h">
       <Filter>Заголовочные файлы\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="cGun.h">
-      <Filter>Заголовочные файлы\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="cObject.h">
       <Filter>Заголовочные файлы\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="cTank.h">
-      <Filter>Заголовочные файлы\Classes</Filter>
+    <ClInclude Include="cGunner.h">
+      <Filter>Заголовочные файлы\Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="cTanker.h">
+      <Filter>Заголовочные файлы\Classes\Units</Filter>
     </ClInclude>
     <ClInclude Include="cUnit.h">
-      <Filter>Заголовочные файлы\Classes</Filter>
+      <Filter>Заголовочные файлы\Classes\Units</Filter>
     </ClInclude>
+    <ClInclude Include="cController.h">
+      <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
+    </ClInclude>
+    <ClInclude Include="cGun.h">
+      <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
+    </ClInclude>
+    <ClInclude Include="cTank.h">
+      <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
+    </ClInclude>
+    <ClInclude Include="cBase.h">
+      <Filter>Заголовочные файлы\Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="cWorld.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="default.txt">

@@ -2,6 +2,7 @@
 #include "cObject.h"
 #include <map>
 #include <string>
+#include "../WIN32DUNEGAME/stdafx.h"
 
 class cTank :
 	public cObject
@@ -42,6 +43,6 @@ public:		virtual cTank& operator=(const cTank &value);
 public:		virtual map< string, string > *readFile();
 			/*Метод приведения класса к строке*/
 public:		virtual string toString();
-
+protected:	virtual void setID();
 };
 
