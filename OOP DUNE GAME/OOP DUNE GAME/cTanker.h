@@ -1,7 +1,7 @@
 #pragma once
 #include "cUnit.h"
 #include "cTank.h"
-#include "../WIN32DUNEGAME/stdafx.h"
+
 
 class cTanker :
 	public cUnit

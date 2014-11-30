@@ -1,7 +1,6 @@
 #pragma once
 #include "cUnit.h"
 #include "cGun.h"
-#include "../WIN32DUNEGAME/stdafx.h"
 
 class cGunner :
 	public cUnit

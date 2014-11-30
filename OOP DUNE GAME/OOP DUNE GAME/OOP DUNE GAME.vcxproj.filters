@@ -15,9 +15,6 @@
     <Filter Include="Файлы исходного кода\Classes">
       <UniqueIdentifier>{3642db21-deae-4fad-ab57-8e60dc39c391}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы ресурсов\Descriptions">
-      <UniqueIdentifier>{3fde29ad-b8b3-40f7-baf6-16c877330f60}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Заголовочные файлы">
       <UniqueIdentifier>{e7fac5ed-4830-46a0-86d8-f363069db9af}</UniqueIdentifier>
     </Filter>
@@ -101,10 +98,5 @@
       <Filter>Заголовочные файлы\Classes\Units</Filter>
     </ClInclude>
     <ClInclude Include="cWorld.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="default.txt">
-      <Filter>Файлы ресурсов\Descriptions</Filter>
-    </Text>
   </ItemGroup>
 </Project>

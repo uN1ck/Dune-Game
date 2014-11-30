@@ -74,3 +74,20 @@ void cUnit::setID()
 {
 	this->ID = typeid(this).name();
 }
+
+int cUnit::getX()
+{
+	return x;
+}
+int cUnit::getY()
+{
+	return y;
+}
+int cUnit::setX(int value)
+{
+	x = value;
+}
+int cUnit::setY(int value)
+{
+	y = value;
+}

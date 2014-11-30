@@ -2,7 +2,6 @@
 #include "cObject.h"
 #include <map>
 #include <string>
-#include "../WIN32DUNEGAME/stdafx.h"
 
 class cGun :
 	public cObject

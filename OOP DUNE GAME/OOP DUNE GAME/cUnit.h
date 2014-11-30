@@ -2,7 +2,6 @@
 #include "cObject.h"
 #include "iClonable.h"
 #include "iUpdateble.h"
-#include "../WIN32DUNEGAME/stdafx.h"
 
 class cUnit :
 	public cObject,
@@ -14,6 +13,8 @@ class cUnit :
 private:	bool isFlying;
 private:	int armor;
 private:	int cost;
+private:	int x;
+private:	int y;
 
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -38,6 +39,11 @@ public:		virtual void setCost(int value);
 public:		virtual void setFlying(bool value);
 			/*Задать абсолютное значение брони*/
 public:		virtual void setArmor(int value);
+
+public:		virtual int getX();
+public:		virtual int getY();
+public:		virtual int setX(int value);
+public:		virtual int setY(int value);
 
 	//  Интерфейсные методы
 			//Приведенеи к строке
