@@ -83,11 +83,11 @@ int cUnit::getY()
 {
 	return y;
 }
-int cUnit::setX(int value)
+void cUnit::setX(int value)
 {
 	x = value;
 }
-int cUnit::setY(int value)
+void cUnit::setY(int value)
 {
 	y = value;
 }

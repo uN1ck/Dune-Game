@@ -99,4 +99,9 @@
     </ClInclude>
     <ClInclude Include="cWorld.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="floorBasic.bmp">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

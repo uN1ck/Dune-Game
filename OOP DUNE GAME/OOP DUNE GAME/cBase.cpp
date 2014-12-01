@@ -141,3 +141,11 @@ void cBase::deleteUnitbyType(string value)
 	}
 	this->countStats();
 }
+
+void cBase::Generate(cObject *world, string value)
+{
+	for (int i = 0; i < value[3] % 10 + 2; i++)
+		this->units->push_back(new cGunner(cUnit(cObject("War Unit", "War unit, used to destroy enemy"), value[5] & 100 + 20), new cGun(cObject("Gun", "The thing used to strike"), value[8] % 10 + 2, value[9] % 50 + 30)));
+	for (int i = 0; i < value[4] % 10 + 4; i++)
+		this->units->push_back(new cTanker(cUnit(cObject("Harvest unit", "Harvest unit? used to get recourses"), value[5] & 100 + 5), new cTank(cObject("Tank", "The thing used to bring resources"), 0 , value[10]%100+20 )));
+}

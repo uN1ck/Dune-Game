@@ -1,10 +1,14 @@
+#pragma once
+
 #include "cUnit.h"
 #include "cObject.h"
 #include <vector>
 #include <typeinfo>
 #include <algorithm>
 #include <map>
-#pragma once
+#include "cGunner.h"
+#include "cTanker.h"
+
 
 bool compareObjects(cUnit *left, cUnit *right);
 
@@ -30,6 +34,8 @@ public:		virtual string toString();
 public:		virtual cObject* clone();
 public:		virtual map< string, string > *readFile();
 public:		virtual void Update(cObject *cell, cObject *world);
+
+public:		virtual void Generate(cObject *world, string value);
 
 public:		virtual void deleteUnitbyName(string value);
 public:		virtual void deleteUnitbyType(string value);

@@ -42,8 +42,8 @@ public:		virtual void setArmor(int value);
 
 public:		virtual int getX();
 public:		virtual int getY();
-public:		virtual int setX(int value);
-public:		virtual int setY(int value);
+public:		virtual void setX(int value);
+public:		virtual void setY(int value);
 
 	//  Интерфейсные методы
 			//Приведенеи к строке
