@@ -1,15 +1,7 @@
 #include <iostream>
-/*#include "cController.h"
-#include "cGun.h"
-#include "cTank.h"
-#include "cGunner.h"
-#include "cTanker.h"
-#include "iClonable.h"
-#include "iStringable.h"
-#include "iUpdateble.h"
-
-#include "cUnit.h"
-#include "cBase.h"*/
+#include "cWorld.h"
+#include "iNetStream.h"
+#include <vector>
 
 using namespace std;
 #include <SFML/Window.hpp>
@@ -17,16 +9,75 @@ using namespace std;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "GameWindow");
+	
+	vector<iNetStream *> *res = new vector<iNetStream *>();
 
-	sf::Texture texture;
-	texture.loadFromFile("floorBasic.bmp");
+	res->push_back(new cUnit(cObject("Name", "Description"), 12));
+	res->push_back(new cObject("I'm OBject 1", "I'm an object, man!"));
+	res->push_back(new cObject("I'm OBject 2", "I'm an object, man!"));
+	res->push_back(new cObject("I'm OBject 3", "Yeah!"));
 
-	sf::Sprite sprite;
-	sprite.setTexture(texture);
-	sprite.setColor(sf::Color(255, 255, 255, 255));
-	sprite.setPosition(5, 5);
-	//sprite.setTextureRect(sf::IntRect(10, 10, 32, 32));
+	FileStream ^ w_fstream = gcnew FileStream("unit.data", FileMode::Create);
+	BinaryWriter ^ o_writer = gcnew BinaryWriter(w_fstream);
+	try{
+		for (vector<iNetStream *>::iterator r = res->begin(); r != res->end(); r++)
+		{
+			cout << dynamic_cast<iStringable*>(*r)->toString() << endl;
+			(*r)->saveToStream(o_writer);
+		}
+		res->clear();
+	}
+	catch (...)
+	{
+		throw gcnew System::Exception("\nIncorrect stream save!");
+	}
+	__finally
+	{
+		o_writer->Close();
+		w_fstream->Close();
+	}
+
+	system("pause");
+
+	FileStream ^ r_fstream = gcnew FileStream("unit.data", FileMode::Open);
+	BinaryReader ^ r_writer = gcnew BinaryReader(r_fstream);
+
+	try{
+		while(r_writer->PeekChar() != -1)
+		{
+			string tpe = cObject::ConvertTo( r_writer->ReadString() );
+			iNetStream *current;
+			if (tpe == "class cUnit *")
+			{
+				current = new cUnit();
+				current->loadFromStream(r_writer);
+			}
+			if (tpe == "class cObject *")
+			{
+				current = new cObject();
+				current->loadFromStream(r_writer);
+			}
+			res->push_back(current);
+		}
+	}
+	catch (...)
+	{
+		throw gcnew System::Exception("\nIncorrect stream read!");
+	}
+	__finally
+	{
+		r_writer->Close();
+		r_fstream->Close();
+	}
+	for (vector<iNetStream *>::iterator r = res->begin(); r != res->end(); r++)
+		cout << dynamic_cast<iStringable*>(*r)->toString() << endl;
+	system("pause");
+
+
+	/*sf::RenderWindow window(sf::VideoMode(800, 600), "GameWindow");
+	cWorld *world = new cWorld();
+	world->Generate()
+
 
 	while (window.isOpen())
 	{
@@ -37,12 +88,12 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		window.clear(sf::Color::White);
+	 	window.clear(sf::Color::White);
 		window.draw(sprite);
 		window.display();
-		
+		*/
 
-	}
+	
 
 
 	return 0;

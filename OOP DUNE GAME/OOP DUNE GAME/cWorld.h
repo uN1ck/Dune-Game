@@ -3,6 +3,8 @@
 #include <vector>
 #include "cBase.h"
 
+#include <SFML\Graphics.hpp>
+
 using namespace std;
 
 class cWorld : 

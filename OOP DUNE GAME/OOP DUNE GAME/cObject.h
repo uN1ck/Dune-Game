@@ -5,12 +5,18 @@
 #include <string>
 #include "iStringable.h"
 #include <map>
+#include "iNetStream.h"
 
+#include <msclr/marshal.h>
+
+using namespace msclr::interop;
 using namespace std;
+using namespace System::IO;
+
 
 
 class cObject :
-	public iStringable
+	public iStringable, public iNetStream
 {
 //Поля
 private:	string name;
@@ -53,6 +59,13 @@ public:		virtual string toString();
 
 public:		string getID() const;
 protected:	virtual void setID();
+
+public: static string ConvertTo(System::String ^value);
+		//Сохранение в поток
+public:		virtual void saveToStream(BinaryWriter ^ value);
+		//Выгрузка из потока
+public:		virtual void loadFromStream(BinaryReader ^ value);
+
 
 };
 

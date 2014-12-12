@@ -2,6 +2,7 @@
 #include "cObject.h"
 #include "iClonable.h"
 #include "iUpdateble.h"
+//#include <SFML/Graphics.hpp>
 
 class cUnit :
 	public cObject,
@@ -15,6 +16,8 @@ private:	int armor;
 private:	int cost;
 private:	int x;
 private:	int y;
+//private:	sf::Texture texture;
+//private:	sf::Sprite sprite;
 
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -45,6 +48,9 @@ public:		virtual int getY();
 public:		virtual void setX(int value);
 public:		virtual void setY(int value);
 
+//public:		virtual void loadTexture();
+//public:		sf::Sprite getSprite() const;
+
 	//  Интерфейсные методы
 			//Приведенеи к строке
 public:		virtual string toString();
@@ -55,5 +61,12 @@ public:		virtual cObject* clone();
 public:		virtual map< string, string > *readFile();
 public:		virtual void Update(cObject *cell, cObject *world);
 protected:	virtual void setID();
+
+			//Сохранение в поток
+public:		virtual void saveToStream(BinaryWriter ^ value);
+			//Выгрузка из потока
+public:		virtual void loadFromStream(BinaryReader ^ value);
+
+
 };
 

@@ -91,3 +91,32 @@ void cUnit::setY(int value)
 {
 	y = value;
 }
+
+void cUnit::saveToStream(BinaryWriter ^ value){
+	cObject::saveToStream(value);
+	value->Write(this->getArmor());
+	value->Write(this->getCost());
+	value->Write(this->getX());
+	value->Write(this->getY());
+}
+
+void cUnit::loadFromStream(BinaryReader ^ value){
+
+	cObject::loadFromStream(value);
+	this->setArmor(value->ReadInt32());
+	this->setCost(value->ReadInt32());
+	this->setX(value->ReadInt32());
+	this->setY(value->ReadInt32());	
+	this->setID();
+};
+
+/*void cUnit::loadTexture()
+{
+	this->texture.loadFromFile(this->getName());
+	sprite.setTexture(texture);
+	sprite.setColor(sf::Color(255, 255, 255, 255));
+}
+sf::Sprite cUnit::getSprite() const
+{
+	return sprite;
+}*/

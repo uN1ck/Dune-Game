@@ -98,6 +98,9 @@
       <Filter>Заголовочные файлы\Classes\Units</Filter>
     </ClInclude>
     <ClInclude Include="cWorld.h" />
+    <ClInclude Include="iNetStream.h">
+      <Filter>Заголовочные файлы\Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="floorBasic.bmp">

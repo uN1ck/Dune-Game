@@ -83,7 +83,7 @@ void cWorld::setWidth(int value)
 
 void cWorld::Generate(string value)
 {
-	if (value.length() >= 8)
+	/*if (value.length() >= 8)
 	{
 		this->setHeight(value[0] % 10 * 100);
 		this->setWidth(value[1] % 10 * 100);
@@ -96,13 +96,19 @@ void cWorld::Generate(string value)
 			currentBase->Generate(this, value);
 
 			for (int i = 0; i < currentBase->getAllUnits()->size(); i++)
+			{
 				this->units->push_back(currentBase->getAllUnits()->at(i));
+				
+				cUnit* currentUnit = dynamic_cast<cUnit*>(this->units->back());
+				sf::Sprite current = currentUnit->getSprite();
+				currentUnit
 
+			}
 
 		
 		}
 	}
-	
+	*/
 }
 
 cWorld::~cWorld()

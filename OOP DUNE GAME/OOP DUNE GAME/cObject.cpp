@@ -89,3 +89,19 @@ void cObject::setID()
 {
 	this->ID = typeid(this).name();
 }
+
+void cObject::saveToStream(BinaryWriter ^ value){
+	value->Write(System::Convert::ToString(this->getID().c_str()));
+}
+
+string cObject::ConvertTo(System::String ^value)
+{
+	marshal_context ^ context = gcnew marshal_context();
+	const char *res = context->marshal_as<const char*>(value);
+	delete context;
+	return string(res);
+}
+
+void cObject::loadFromStream(BinaryReader ^ value){
+
+};

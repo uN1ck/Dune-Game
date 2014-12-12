@@ -20,6 +20,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>true</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -92,6 +93,7 @@
     <ClInclude Include="cUnit.h" />
     <ClInclude Include="cWorld.h" />
     <ClInclude Include="iClonable.h" />
+    <ClInclude Include="iNetStream.h" />
     <ClInclude Include="iStringable.h" />
     <ClInclude Include="iUpdateble.h" />
   </ItemGroup>
