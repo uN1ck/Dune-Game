@@ -97,9 +97,17 @@
     <ClInclude Include="cBase.h">
       <Filter>Заголовочные файлы\Classes\Units</Filter>
     </ClInclude>
-    <ClInclude Include="cWorld.h" />
     <ClInclude Include="iNetStream.h">
-      <Filter>Заголовочные файлы\Classes</Filter>
+      <Filter>Заголовочные файлы\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="iMovable.h">
+      <Filter>Заголовочные файлы\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="cWorld.h">
+      <Filter>Заголовочные файлы\Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="iAccess.h">
+      <Filter>Заголовочные файлы\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

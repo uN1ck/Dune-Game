@@ -53,7 +53,7 @@ cUnit::~cUnit()
 
 string cUnit::toString()
 {
-	return cObject::toString() + "#Armor " + to_string(this->getArmor()) + "\n#ID |" + this->getID() + "|\n";
+	return cObject::toString() + "#Armor " + to_string(this->getArmor()) + "\n";
 }
 cObject* cUnit::clone()
 {
@@ -75,48 +75,73 @@ void cUnit::setID()
 	this->ID = typeid(this).name();
 }
 
-int cUnit::getX()
-{
-	return x;
-}
-int cUnit::getY()
-{
-	return y;
-}
-void cUnit::setX(int value)
-{
-	x = value;
-}
-void cUnit::setY(int value)
-{
-	y = value;
-}
 
 void cUnit::saveToStream(BinaryWriter ^ value){
-	cObject::saveToStream(value);
-	value->Write(this->getArmor());
-	value->Write(this->getCost());
-	value->Write(this->getX());
-	value->Write(this->getY());
+	try{
+		cObject::saveToStream(value);
+		value->Write(this->getArmor());
+		value->Write(this->getCost());
+	}
+	catch (System::Exception^ e)
+	{
+		throw e;
+	}
 }
 
 void cUnit::loadFromStream(BinaryReader ^ value){
-
-	cObject::loadFromStream(value);
-	this->setArmor(value->ReadInt32());
-	this->setCost(value->ReadInt32());
-	this->setX(value->ReadInt32());
-	this->setY(value->ReadInt32());	
-	this->setID();
+	try{
+		cObject::loadFromStream(value);
+		this->setArmor(value->ReadInt32());
+		this->setCost(value->ReadInt32());
+		this->setID();
+	}
+	catch (System::Exception^ e)
+	{
+		throw e;
+	}
 };
 
-/*void cUnit::loadTexture()
+sf::Sprite  cUnit::getSprite()
 {
-	this->texture.loadFromFile(this->getName());
-	sprite.setTexture(texture);
-	sprite.setColor(sf::Color(255, 255, 255, 255));
+	return this->sprite;
 }
-sf::Sprite cUnit::getSprite() const
+sf::Texture cUnit::getTexture()
 {
-	return sprite;
-}*/
+	return this->texture;
+}
+sf::IntRect cUnit::getTextureRectangle()
+{
+	return this->rectangle;
+}
+void cUnit::setSprite(sf::Sprite value)
+{
+	this->sprite = value;
+}
+void cUnit::setTexture(sf::Texture value)
+{
+	this->texture = value;
+}
+void cUnit::setTextureRectangle(sf::IntRect value)
+{
+	this->rectangle = value;
+}
+
+void cUnit::moveUp(iAccess * world)
+{
+}
+void cUnit::moveDown(iAccess * world)
+{
+
+}
+void cUnit::moveLeft(iAccess * world)
+{
+
+}
+void cUnit::moveRight(iAccess * world)
+{
+
+}
+void cUnit::doAction(iAccess *world, cObject *commited)
+{
+
+}

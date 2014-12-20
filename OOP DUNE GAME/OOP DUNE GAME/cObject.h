@@ -22,6 +22,7 @@ class cObject :
 private:	string name;
 private:	string description;
 protected:	string ID;
+protected:	string uniqueName;
 
 		//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -60,12 +61,15 @@ public:		virtual string toString();
 public:		string getID() const;
 protected:	virtual void setID();
 
-public: static string ConvertTo(System::String ^value);
+public:	static string getString(BinaryReader ^value);
+
 		//Сохранение в поток
 public:		virtual void saveToStream(BinaryWriter ^ value);
 		//Выгрузка из потока
 public:		virtual void loadFromStream(BinaryReader ^ value);
 
+public:		virtual string getUN();
+public:		virtual void setUN(string value);
 
 };
 

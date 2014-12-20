@@ -10,7 +10,7 @@
 #include "cTanker.h"
 
 
-bool compareObjects(cUnit *left, cUnit *right);
+//bool compareObjects(cUnit *left, cUnit *right);
 
 class cBase :
 	public cUnit
@@ -38,13 +38,22 @@ public:		virtual void Update(cObject *cell, cObject *world);
 public:		virtual void Generate(cObject *world, string value);
 
 public:		virtual void deleteUnitbyName(string value);
-public:		virtual void deleteUnitbyType(string value);
+public:		virtual void deleteUnitbyUN(string value);
 
 public:		void countStats();
 public:		string getStats();
 
 public:		virtual ~cBase();
 protected:	virtual void setID();
+
+public:		virtual void moveUp(iAccess * world);
+public:		virtual void moveDown(iAccess * world);
+public:		virtual void moveLeft(iAccess *world);
+public:		virtual void moveRight(iAccess *world);
+public:		virtual void doAction(iAccess *world, cObject *commited);
+
+public: static void saveBinary(vector<iNetStream *> * value, System::String^ name);
+public: static void loadBinary(vector<iNetStream *> * value, System::String^ name);
 };
 
 //bool compareObjects(cUnit *left, cUnit *right);

@@ -65,7 +65,7 @@ cObject::cObject(const string in_name, const string in_description)
 //Интерфейсные методы
 string cObject::toString()
 {
-	return "#Name " + this->getName() + "\n#Description " + this->getDescription() +"\n";
+	return "#Name " + this->getName() + "\n#Description " + this->getDescription() + "\n#ID |" + this->getID() + "|\n";
 }
 //Деструктор
 cObject::~cObject()
@@ -91,17 +91,55 @@ void cObject::setID()
 }
 
 void cObject::saveToStream(BinaryWriter ^ value){
-	value->Write(System::Convert::ToString(this->getID().c_str()));
+	
+	try{
+		value->Write(this->getID().size());
+		System::String ^outer = gcnew System::String(this->getID().c_str());
+		value->Write(outer);
+
+		value->Write(this->getName().size());
+		outer = gcnew System::String(this->getName().c_str());
+		value->Write(outer);
+
+		value->Write(this->getDescription().size());
+		outer = gcnew System::String(this->getDescription().c_str());
+		value->Write(outer);
+	}
+	catch (System::Exception^e)
+	{
+		throw e;
+	}
+
 }
 
-string cObject::ConvertTo(System::String ^value)
+string cObject::getString(BinaryReader ^value)
 {
-	marshal_context ^ context = gcnew marshal_context();
-	const char *res = context->marshal_as<const char*>(value);
-	delete context;
-	return string(res);
+	int sz = 0;
+	string res;
+	sz = value->ReadInt32();
+	value->ReadChar();
+	for (int i = 0; i < sz; i++)
+		res.push_back(value->ReadChar());
+	return res;
 }
 
 void cObject::loadFromStream(BinaryReader ^ value){
-
+	try{
+		this->setName(cObject::getString(value));
+		this->setDescription(cObject::getString(value));
+		this->setID();
+	}
+	catch (System::Exception^e)
+	{
+		throw e;
+	}
 };
+
+string cObject::getUN()
+{
+	return this->uniqueName;
+}
+void cObject::setUN(string value)
+{
+	this->uniqueName = value;
+}

@@ -2,22 +2,24 @@
 #include "cObject.h"
 #include "iClonable.h"
 #include "iUpdateble.h"
-//#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include "iMovable.h"
+#include "iAccess.h"
 
 class cUnit :
 	public cObject,
 	public iClonable,
-	public iUpdateble
-
+	public iUpdateble,
+	public iMovable
 {
 	//Поля
 private:	bool isFlying;
 private:	int armor;
 private:	int cost;
-private:	int x;
-private:	int y;
-//private:	sf::Texture texture;
-//private:	sf::Sprite sprite;
+
+private:	sf::Texture texture;
+private:	sf::Sprite sprite;
+private:	sf::IntRect rectangle;
 
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -43,10 +45,6 @@ public:		virtual void setFlying(bool value);
 			/*Задать абсолютное значение брони*/
 public:		virtual void setArmor(int value);
 
-public:		virtual int getX();
-public:		virtual int getY();
-public:		virtual void setX(int value);
-public:		virtual void setY(int value);
 
 //public:		virtual void loadTexture();
 //public:		sf::Sprite getSprite() const;
@@ -67,6 +65,17 @@ public:		virtual void saveToStream(BinaryWriter ^ value);
 			//Выгрузка из потока
 public:		virtual void loadFromStream(BinaryReader ^ value);
 
+public:		virtual sf::Sprite getSprite();
+public:		virtual sf::Texture getTexture();
+public:		virtual sf::IntRect getTextureRectangle();
+public:		virtual void setSprite(sf::Sprite);
+public:		virtual void setTexture(sf::Texture);
+public:		virtual void setTextureRectangle(sf::IntRect);
 
+public:		virtual void moveUp(iAccess * world);
+public:		virtual void moveDown(iAccess * world);
+public:		virtual void moveLeft(iAccess *world);
+public:		virtual void moveRight(iAccess *world);
+public:		virtual void doAction(iAccess *world, cObject *commited);
 };
 

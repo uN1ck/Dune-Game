@@ -29,5 +29,7 @@ public:		~cGunner();
 protected:	virtual void setID();
 
 public:		virtual string toString();
+
+public:		virtual void doAction(iAccess *world, cObject *commited);
 };
 

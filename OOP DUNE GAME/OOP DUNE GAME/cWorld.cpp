@@ -52,9 +52,11 @@ map <string, string> *cWorld::readFile()
 
 void cWorld::Update()
 {
-	for each (cBase *current in *this->bases)
+	for each (cObject *current in *this->bases)
 	{
-		current->Update(this, this);
+		iUpdateble *upd = dynamic_cast<iUpdateble*> (current);
+		if (upd)
+			upd->Update(this, this);
 	}
 }
 
@@ -79,6 +81,11 @@ void cWorld::setHeight(int value)
 void cWorld::setWidth(int value)
 {
 	this->width = value;
+}
+
+void cWorld::putUnit(cObject* value)
+{
+	this->units->push_back(value);
 }
 
 void cWorld::Generate(string value)
@@ -123,4 +130,33 @@ cWorld::~cWorld()
 			delete *k;
 	}
 	delete world;
+}
+
+cObject* cWorld::at(int x, int y)
+{
+	if (x < this->getHeight() && y < this->getWidth() && x >= 0 && y <= 0)
+		return (*this->world)[x][y];
+	return NULL;
+}
+cObject* cWorld::at(pair<int, int> value)
+{
+	return this->at(value.first, value.second);
+}
+pair<int, int> cWorld::position(string value)
+{
+	for (int x = 0; x < this->getWidth(); x++)
+		for (int y = 0; y < this->getHeight(); y++)
+			if ((*this->world)[x][y]->getUN() == value)
+				return pair<int, int>(x, y);
+	return (pair<int, int>(-1, -1));
+
+}
+bool cWorld::place(cObject* value, pair<int, int> position)
+{
+	int x = position.first;
+	int y = position.second;
+	if (x < this->getHeight() && y < this->getWidth() && x >= 0 && y <= 0)
+		return ((*this->world)[x][y] = value);
+	return false;
+
 }

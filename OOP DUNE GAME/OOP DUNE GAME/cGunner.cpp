@@ -45,3 +45,12 @@ string cGunner::toString()
 	res += this->gun->toString();
 	return res;
 }
+
+void cGunner::doAction(iAccess *world, cObject *commited)
+{
+	cUnit *value = dynamic_cast<cUnit *>(commited);
+	if (value)
+	{
+		value->setArmor(value->getArmor() - this->getGun()->getDamage());
+	}
+}

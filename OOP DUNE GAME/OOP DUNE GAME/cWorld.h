@@ -1,7 +1,8 @@
 #pragma once
 #include "cObject.h"
 #include <vector>
-#include "cBase.h"
+#include "iUpdateble.h"
+#include "iAccess.h"
 
 #include <SFML\Graphics.hpp>
 
@@ -22,7 +23,13 @@ public:		cWorld(const cWorld& value);
 public:	vector< vector< cObject* > > * getWorld();
 public: vector< cObject* > *getUnits() const;
 public: vector< cObject* > *getBases() const;
-public: void putUnit(cUnit* value);
+
+public:	virtual cObject* at(int x, int y);
+public:	virtual cObject* at(pair<int, int>);
+public:	virtual pair<int, int> position(string value);
+public:	virtual bool place(cObject* value, pair<int, int>);
+
+public: void putUnit(cObject* value);
 public:	int getHeight();
 public: void setHeight(int value);
 public:	int getWidth();

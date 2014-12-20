@@ -2,7 +2,6 @@
 #include "cUnit.h"
 #include "cTank.h"
 
-
 class cTanker :
 	public cUnit
 {
@@ -28,5 +27,6 @@ public:		virtual~cTanker();
 protected:	virtual void setID();
 
 public:		virtual string toString();
+
 };
 

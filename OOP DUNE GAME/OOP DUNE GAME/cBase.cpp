@@ -104,6 +104,62 @@ string cBase::getStats()
 	return res;
 }
 
+void cBase::saveBinary(vector<iNetStream *> * value, System::String^ name = "unit.data")
+{
+	FileStream ^ w_fstream = gcnew FileStream(name, FileMode::Create);
+	BinaryWriter ^ o_writer = gcnew BinaryWriter(w_fstream);
+
+	try{
+		for (vector<iNetStream *>::iterator r = value->begin(); r != value->end(); r++)
+		{
+			(*r)->saveToStream(o_writer);
+		}
+		value->clear();
+	}
+	__finally
+	{
+		o_writer->Close();
+		w_fstream->Close();
+	}
+}
+
+void cBase::loadBinary(vector<iNetStream *> * value, System::String^ name = "unit.data")
+{
+	FileStream ^ r_fstream = gcnew FileStream(name, FileMode::Open);
+	BinaryReader ^ r_writer = gcnew BinaryReader(r_fstream);
+
+	try{
+		while (r_writer->PeekChar() != -1)
+		{
+			string tpe = cObject::getString(r_writer);
+			iNetStream *current;
+
+			if (tpe == "class cObject *")
+			{
+				current = new cObject();
+				try{
+
+					current->loadFromStream(r_writer);
+					value->push_back(current);
+				}
+				catch (System::Exception ^ value){
+					delete current;
+					throw value;
+				}
+			}
+		}
+	}
+	catch (System::Exception ^ value)
+	{
+		throw value;
+	}
+	__finally
+	{
+		r_writer->Close();
+		r_fstream->Close();
+	}
+}
+
 void cBase::setID()
 {
 	this->ID = typeid(this).name();
@@ -125,12 +181,12 @@ void cBase::deleteUnitbyName(string value)
 	this->countStats();
 }
 
-void cBase::deleteUnitbyType(string value)
+void cBase::deleteUnitbyUN(string value)
 {
 	
 	for (vector<cUnit*> ::iterator itr = units->begin(); itr != units->end();)
 	{
-		if ((*itr)->getID() == value)
+		if ((*itr)->getUN() == value)
 		{
 			itr = units->erase(itr);
 		}
@@ -148,4 +204,26 @@ void cBase::Generate(cObject *world, string value)
 		this->units->push_back(new cGunner(cUnit(cObject("War Unit", "War unit, used to destroy enemy"), value[5] & 100 + 20), new cGun(cObject("Gun", "The thing used to strike"), value[8] % 10 + 2, value[9] % 50 + 30)));
 	for (int i = 0; i < value[4] % 10 + 4; i++)
 		this->units->push_back(new cTanker(cUnit(cObject("Harvest unit", "Harvest unit? used to get recourses"), value[5] & 100 + 5), new cTank(cObject("Tank", "The thing used to bring resources"), 0 , value[10]%100+20 )));
+}
+
+void cBase::moveUp(iAccess * world)
+{
+
+}
+void cBase::moveDown(iAccess * world)
+{
+
+}
+void cBase::moveLeft(iAccess * world)
+{
+
+}
+void cBase::moveRight(iAccess * world)
+{
+
+}
+
+void cBase::doAction(iAccess *world, cObject *commited)
+{
+	//do race spell on commited
 }
