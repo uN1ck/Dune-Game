@@ -109,6 +109,7 @@
     <ClInclude Include="iAccess.h">
       <Filter>Заголовочные файлы\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="iDrawable.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="floorBasic.bmp">

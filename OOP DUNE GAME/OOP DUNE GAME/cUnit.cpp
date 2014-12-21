@@ -145,3 +145,19 @@ void cUnit::doAction(iAccess *world, cObject *commited)
 {
 
 }
+
+void cUnit::loadGraphical()
+{
+	this->setTextureRectangle(sf::IntRect(0, 0, 32, 32));
+
+	string mark = this->getID();
+	mark.erase(mark.end());
+	mark += ".png";
+
+	if (!this->getTexture().loadFromFile(mark, this->getTextureRectangle()));
+	this->getTexture().loadFromFile("deafult.png", this->getTextureRectangle());
+
+	this->getSprite().setTexture(this->getTexture());
+	this->getSprite().setTextureRect(this->getTextureRectangle());
+	this->getSprite().setColor(sf::Color(255, 255, 255, 0));
+}

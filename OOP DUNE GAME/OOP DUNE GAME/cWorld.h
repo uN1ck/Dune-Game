@@ -3,6 +3,8 @@
 #include <vector>
 #include "iUpdateble.h"
 #include "iAccess.h"
+#include <set>
+#include "cBase.h"
 
 #include <SFML\Graphics.hpp>
 
@@ -42,6 +44,8 @@ public: virtual string toString();
 protected:	virtual void setID();
 
 public:		virtual map< string, string > *readFile();
+
+public:		 static string generateSEED();
 
 	virtual ~cWorld();
 };

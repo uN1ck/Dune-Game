@@ -76,6 +76,8 @@ void cBase::sortAllUnits()
 	sort(this->units->begin(), this->units->end(), &compareObjects);
 }
 
+
+
 cBase::~cBase()
 {
 	for (vector<cUnit*> ::iterator itr = units->begin(); itr != units->end(); itr++)
@@ -200,10 +202,16 @@ void cBase::deleteUnitbyUN(string value)
 
 void cBase::Generate(cObject *world, string value)
 {
+	int damage = value[6] % 10 + 2;
+	int radius = value[5] % 10 + 10;
+	int barmor = value[4] % 21 + 40;
+	int carmor = value[10] % 21 + 20;
+	int carrysize = value[11]%21 + 80;
+
 	for (int i = 0; i < value[3] % 10 + 2; i++)
-		this->units->push_back(new cGunner(cUnit(cObject("War Unit", "War unit, used to destroy enemy"), value[5] & 100 + 20), new cGun(cObject("Gun", "The thing used to strike"), value[8] % 10 + 2, value[9] % 50 + 30)));
-	for (int i = 0; i < value[4] % 10 + 4; i++)
-		this->units->push_back(new cTanker(cUnit(cObject("Harvest unit", "Harvest unit? used to get recourses"), value[5] & 100 + 5), new cTank(cObject("Tank", "The thing used to bring resources"), 0 , value[10]%100+20 )));
+		this->units->push_back(new cGunner(cUnit(cObject("War Unit", "War unit, used to destroy enemy"), barmor), new cGun(cObject("Gun", "The thing used to strike"), radius, damage)));
+	for (int i = 0; i < value[9] % 10 + 4; i++)
+		this->units->push_back(new cTanker(cUnit(cObject("Harvest unit", "Harvest unit? used to get recourses"), carmor), new cTank(cObject("Tank", "The thing used to bring resources"),0 , carrysize )));
 }
 
 void cBase::moveUp(iAccess * world)

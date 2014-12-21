@@ -85,37 +85,31 @@ void cWorld::setWidth(int value)
 
 void cWorld::putUnit(cObject* value)
 {
+	value->setUN( to_string(this->units->size()+1));
 	this->units->push_back(value);
 }
 
 void cWorld::Generate(string value)
 {
-	/*if (value.length() >= 8)
+	if (value.length() >= 8)
 	{
-		this->setHeight(value[0] % 10 * 100);
-		this->setWidth(value[1] % 10 * 100);
+		this->setHeight(value[0] % 100 + 100);
+		this->setWidth(value[0] % 100 + 100);
 
-		for (int i = 0; i < value[2] % 11 + 2; i++)
+		for (int i = 0; i < value[2] % 3 + 2; i++)
 		{
-			string baseName = "base" + to_string(i);
+			string baseName = "Base #" + to_string(i);
 			bases->push_back(new cBase(cUnit(cObject(baseName, "The base of player " + to_string(i)), value[4] % 1000 + 200), 0));
 			cBase *currentBase = dynamic_cast<cBase*>(bases->back());
 			currentBase->Generate(this, value);
 
 			for (int i = 0; i < currentBase->getAllUnits()->size(); i++)
-			{
 				this->units->push_back(currentBase->getAllUnits()->at(i));
-				
-				cUnit* currentUnit = dynamic_cast<cUnit*>(this->units->back());
-				sf::Sprite current = currentUnit->getSprite();
-				currentUnit
-
-			}
-
-		
 		}
+
+		for (int i = 0; i < value[1] % 10 + 20;i++);
+			//создать спасовые поля
 	}
-	*/
 }
 
 cWorld::~cWorld()
@@ -159,4 +153,9 @@ bool cWorld::place(cObject* value, pair<int, int> position)
 		return ((*this->world)[x][y] = value);
 	return false;
 
+}
+static string generateSEED(){
+	string res;
+	for (int i = 0; i < 16; i++)
+		res.push_back(rand() % 1001);
 }

@@ -5,12 +5,14 @@
 #include <SFML/Graphics.hpp>
 #include "iMovable.h"
 #include "iAccess.h"
+#include "iDrawable.h"
 
 class cUnit :
 	public cObject,
 	public iClonable,
 	public iUpdateble,
-	public iMovable
+	public iMovable,
+	public iDrawable
 {
 	//Поля
 private:	bool isFlying;
@@ -77,5 +79,7 @@ public:		virtual void moveDown(iAccess * world);
 public:		virtual void moveLeft(iAccess *world);
 public:		virtual void moveRight(iAccess *world);
 public:		virtual void doAction(iAccess *world, cObject *commited);
+
+public:		virtual void loadGraphical();
 };
 
