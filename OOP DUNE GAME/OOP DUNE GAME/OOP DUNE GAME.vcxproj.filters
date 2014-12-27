@@ -35,9 +35,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Файлы исходного кода\Main Exetucable</Filter>
     </ClCompile>
-    <ClCompile Include="cController.cpp">
-      <Filter>Файлы исходного кода\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="cGun.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
@@ -59,8 +56,17 @@
     <ClCompile Include="cBase.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="cPosited.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="cWorld.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="cGunControl.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="cTankControl.cpp">
+      <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,9 +91,6 @@
     <ClInclude Include="cUnit.h">
       <Filter>Заголовочные файлы\Classes\Units</Filter>
     </ClInclude>
-    <ClInclude Include="cController.h">
-      <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
-    </ClInclude>
     <ClInclude Include="cGun.h">
       <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
     </ClInclude>
@@ -96,9 +99,6 @@
     </ClInclude>
     <ClInclude Include="cBase.h">
       <Filter>Заголовочные файлы\Classes\Units</Filter>
-    </ClInclude>
-    <ClInclude Include="iNetStream.h">
-      <Filter>Заголовочные файлы\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="iMovable.h">
       <Filter>Заголовочные файлы\Interfaces</Filter>
@@ -109,7 +109,21 @@
     <ClInclude Include="iAccess.h">
       <Filter>Заголовочные файлы\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="iDrawable.h" />
+    <ClInclude Include="cPosited.h">
+      <Filter>Заголовочные файлы\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="iDrawable.h">
+      <Filter>Заголовочные файлы\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="iController.h">
+      <Filter>Заголовочные файлы\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="cGunControl.h">
+      <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
+    </ClInclude>
+    <ClInclude Include="cTankControl.h">
+      <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="floorBasic.bmp">

@@ -1,50 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "cWorld.h"
-#include "iNetStream.h"
 #include <vector>
 #include "iDrawable.h"
 #include "iUpdateble.h"
 
 using namespace std;
-#include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
+
+cWorld *world;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "GameWindow");
-	cWorld *world = new cWorld();
-	//world->Generate()
+	freopen("Debugged.log", "r", stdout);
+	world = new cWorld();
+	world->Generate(string{ 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, false);
 
-
-	while (window.isOpen())
+	int ended = 1;
+	while (ended < 10)
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			// "close requested" event: we close the window
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear(sf::Color::White);
-
+		cout << "\nITERATION\n\n";
 		world->Update();
-		for (int x = 0; x < world->getWidth(); x++)
-		{
-			for (int y = 0; y < world->getHeight(); y++)
-			{
-				if ((*world->getWorld())[x][y])
-				{
-					iDrawable *drawable = dynamic_cast<iDrawable*>((*world->getWorld())[x][y]);
-					if (drawable)
-						window.draw(drawable->getSprite());
-				}
-			}
-		}
+		cout << world->toString();
 
-		//
-		//(sprite);
-		window.display();
+		//system("pause");
+		//cin >> ended;
+		//system("cls");
+		ended++;
 	}
-
 	return 0;
 }

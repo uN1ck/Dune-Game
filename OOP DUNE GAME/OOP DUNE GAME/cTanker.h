@@ -1,6 +1,7 @@
 #pragma once
 #include "cUnit.h"
 #include "cTank.h"
+#include "cTankControl.h"
 
 class cTanker :
 	public cUnit

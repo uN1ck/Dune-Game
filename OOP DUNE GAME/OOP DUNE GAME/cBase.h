@@ -8,15 +8,18 @@
 #include <map>
 #include "cGunner.h"
 #include "cTanker.h"
+#include "iAccess.h"
 
 
 //bool compareObjects(cUnit *left, cUnit *right);
 
 class cBase :
-	public cUnit
+	public cUnit,
+	public iAccess
 {
 protected:	vector<cUnit*>* units;
 protected:	map<string, int> counts;
+protected:	cTank* supply;
 
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -52,8 +55,12 @@ public:		virtual void moveLeft(iAccess *world);
 public:		virtual void moveRight(iAccess *world);
 public:		virtual void doAction(iAccess *world, cObject *commited);
 
-public: static void saveBinary(vector<iNetStream *> * value, System::String^ name);
-public: static void loadBinary(vector<iNetStream *> * value, System::String^ name);
+
+public:		virtual cObject* at(int x, int y);
+public:		virtual cObject* at(pair<int, int>);
+public:		virtual pair<int, int> position(string value);
+
+public:		virtual vector<cObject*> getAround(int x, int y, int r);
 };
 
 //bool compareObjects(cUnit *left, cUnit *right);

@@ -10,20 +10,23 @@ void cGunner::setGun(cGun *value)
 	this->gun = value;
 }
 
-cGunner::cGunner() : cUnit(cObject("Standart Gunner", "Standart gunner"), 10)
+cGunner::cGunner() : cUnit(cPosited(cObject("Standart Gunner", "Standart gunner"),0,0), 10)
 {
 	this->gun = new cGun(cObject("Standart Gunner", "Standart Gunner with gun"),0,1);
 	this->setID();
+	this->control = new cGunControl();
 }
 cGunner::cGunner(const cUnit &value, cGun *in_gun) : cUnit(value)
 {
 	this->setGun(in_gun);
 	this->setID();
+	this->control = new cGunControl();
 }
 cGunner::cGunner(const cGunner &value) : cUnit(value)
 {
 	this->setGun(value.getGun());
 	this->setID();
+	this->control = new cGunControl();
 }
 
 cGunner::~cGunner()
@@ -32,6 +35,7 @@ cGunner::~cGunner()
 }
 void cGunner::Update(cObject *cell, cObject *world)
 {
+	this->control->activity(world, this);
 	/*Место для стрельбы*/
 	/*Место отработки интелекта*/
 }

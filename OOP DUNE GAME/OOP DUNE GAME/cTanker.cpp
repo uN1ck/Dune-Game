@@ -9,20 +9,23 @@ void cTanker::setTank(cTank *value)
 	this->tank = value;
 }
 
-cTanker::cTanker() : cUnit( cObject("Standart Tanker", "Standart tanker, flying then doesn't mine spice"), 10)
+cTanker::cTanker() : cUnit(cPosited( cObject("Standart Tanker", "Standart tanker, flying then doesn't mine spice"),0,0), 10)
 {
 	this->tank = new cTank(cObject("Standart Tank", "Standart Tank with spice"), 0, 100);
 	this->setID();
+	this->control = new cTankControl();
 }
 cTanker::cTanker(const cUnit &value, cTank *in_tank) : cUnit(value)
 {
 	this->setTank(in_tank);
 	this->setID();
+	this->control = new cTankControl();
 }			
 cTanker::cTanker(const cTanker &value) : cUnit(value)
 {
 	this->setTank(value.getTank());
 	this->setID();
+	this->control = new cTankControl();
 }
 
 cTanker::~cTanker()
@@ -32,6 +35,7 @@ cTanker::~cTanker()
 
 void cTanker::Update(cObject *cell, cObject *world)
 {
+	this->control->activity(world, this);
 	/*Место обработки спайса*/
 	/*Место отработки интелекта*/
 }

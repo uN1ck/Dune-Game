@@ -26,25 +26,27 @@ map <string, string> *cUnit::readFile()
 	return file;
 }
 
-cUnit::cUnit() : cObject()
+cUnit::cUnit() : cPosited()
 {
+	this->control = 0;
 	this->setArmor(5);
 	this->setID();
 }
-cUnit::cUnit(const cObject& value, int armor_value) : cObject(value)
+cUnit::cUnit(const cPosited& value, int armor_value) : cPosited(value)
 {
+	this->control = 0;
 	this->setArmor(armor_value);
 	this->setID();
 }
-cUnit::cUnit(const cUnit &value) : cObject(value)
+cUnit::cUnit(const cUnit &value) : cPosited(value)
 {
+	this->control = 0;
 	this->setArmor(value.getArmor());
 	this->setID();
 }
 
 void cUnit::Update(cObject *cell, cObject *world)
 {
-
 }
 
 cUnit::~cUnit()
@@ -53,7 +55,7 @@ cUnit::~cUnit()
 
 string cUnit::toString()
 {
-	return cObject::toString() + "#Armor " + to_string(this->getArmor()) + "\n";
+	return cPosited::toString() + "#Armor " + to_string(this->getArmor()) + "\n";
 }
 cObject* cUnit::clone()
 {
@@ -76,88 +78,29 @@ void cUnit::setID()
 }
 
 
-void cUnit::saveToStream(BinaryWriter ^ value){
-	try{
-		cObject::saveToStream(value);
-		value->Write(this->getArmor());
-		value->Write(this->getCost());
-	}
-	catch (System::Exception^ e)
-	{
-		throw e;
-	}
-}
 
-void cUnit::loadFromStream(BinaryReader ^ value){
-	try{
-		cObject::loadFromStream(value);
-		this->setArmor(value->ReadInt32());
-		this->setCost(value->ReadInt32());
-		this->setID();
-	}
-	catch (System::Exception^ e)
-	{
-		throw e;
-	}
-};
-
-sf::Sprite  cUnit::getSprite()
+void cUnit::moveUp(iAccess *world)
 {
-	return this->sprite;
-}
-sf::Texture cUnit::getTexture()
-{
-	return this->texture;
-}
-sf::IntRect cUnit::getTextureRectangle()
-{
-	return this->rectangle;
-}
-void cUnit::setSprite(sf::Sprite value)
-{
-	this->sprite = value;
-}
-void cUnit::setTexture(sf::Texture value)
-{
-	this->texture = value;
-}
-void cUnit::setTextureRectangle(sf::IntRect value)
-{
-	this->rectangle = value;
-}
-
-void cUnit::moveUp(iAccess * world)
-{
+	if (world->at(this->X(), this->Y() - 1)->getName()=="empty")
+		this->Y(this->Y() - 1);
 }
 void cUnit::moveDown(iAccess * world)
 {
-
+	if (world->at(this->X(), this->Y() + 1)->getName() == "empty")
+		this->Y(this->Y() + 1);
 }
 void cUnit::moveLeft(iAccess * world)
 {
-
+	if (world->at(this->X() - 1, this->Y())->getName() == "empty")
+		this->X(this->X() - 1);
 }
 void cUnit::moveRight(iAccess * world)
 {
-
+	if (world->at(this->X() + 1, this->Y())->getName() == "empty")
+		this->X(this->X() + 1);
 }
 void cUnit::doAction(iAccess *world, cObject *commited)
 {
 
 }
 
-void cUnit::loadGraphical()
-{
-	this->setTextureRectangle(sf::IntRect(0, 0, 32, 32));
-
-	string mark = this->getID();
-	mark.erase(mark.end());
-	mark += ".png";
-
-	if (!this->getTexture().loadFromFile(mark, this->getTextureRectangle()));
-	this->getTexture().loadFromFile("deafult.png", this->getTextureRectangle());
-
-	this->getSprite().setTexture(this->getTexture());
-	this->getSprite().setTextureRect(this->getTextureRectangle());
-	this->getSprite().setColor(sf::Color(255, 255, 255, 0));
-}

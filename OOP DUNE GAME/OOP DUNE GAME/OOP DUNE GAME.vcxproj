@@ -72,11 +72,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cBase.cpp" />
-    <ClCompile Include="cController.cpp" />
     <ClCompile Include="cGun.cpp" />
+    <ClCompile Include="cGunControl.cpp" />
     <ClCompile Include="cGunner.cpp" />
     <ClCompile Include="cObject.cpp" />
+    <ClCompile Include="cPosited.cpp" />
     <ClCompile Include="cTank.cpp" />
+    <ClCompile Include="cTankControl.cpp" />
     <ClCompile Include="cTanker.cpp" />
     <ClCompile Include="cUnit.cpp" />
     <ClCompile Include="cWorld.cpp" />
@@ -84,10 +86,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cBase.h" />
-    <ClInclude Include="cController.h" />
+    <ClInclude Include="cGunControl.h" />
+    <ClInclude Include="cTankControl.h" />
+    <ClInclude Include="iController.h" />
     <ClInclude Include="cGun.h" />
     <ClInclude Include="cGunner.h" />
     <ClInclude Include="cObject.h" />
+    <ClInclude Include="cPosited.h" />
     <ClInclude Include="cTank.h" />
     <ClInclude Include="cTanker.h" />
     <ClInclude Include="cUnit.h" />
@@ -96,7 +101,6 @@
     <ClInclude Include="iClonable.h" />
     <ClInclude Include="iDrawable.h" />
     <ClInclude Include="iMovable.h" />
-    <ClInclude Include="iNetStream.h" />
     <ClInclude Include="iStringable.h" />
     <ClInclude Include="iUpdateble.h" />
   </ItemGroup>

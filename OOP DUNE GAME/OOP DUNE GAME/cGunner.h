@@ -1,6 +1,7 @@
 #pragma once
 #include "cUnit.h"
 #include "cGun.h"
+#include "cGunControl.h"
 
 class cGunner :
 	public cUnit
@@ -8,6 +9,7 @@ class cGunner :
 	/*Поля*/
 			 /*Поле с оружием*/
 private:	 cGun* gun;
+
 		/*Set-Get методы*/
 			 /*Взять оружие*/
 public:		 cGun* getGun() const;

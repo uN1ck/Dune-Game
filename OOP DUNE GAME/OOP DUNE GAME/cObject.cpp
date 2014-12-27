@@ -90,51 +90,6 @@ void cObject::setID()
 	this->ID = typeid(this).name();
 }
 
-void cObject::saveToStream(BinaryWriter ^ value){
-	
-	try{
-		value->Write(this->getID().size());
-		System::String ^outer = gcnew System::String(this->getID().c_str());
-		value->Write(outer);
-
-		value->Write(this->getName().size());
-		outer = gcnew System::String(this->getName().c_str());
-		value->Write(outer);
-
-		value->Write(this->getDescription().size());
-		outer = gcnew System::String(this->getDescription().c_str());
-		value->Write(outer);
-	}
-	catch (System::Exception^e)
-	{
-		throw e;
-	}
-
-}
-
-string cObject::getString(BinaryReader ^value)
-{
-	int sz = 0;
-	string res;
-	sz = value->ReadInt32();
-	value->ReadChar();
-	for (int i = 0; i < sz; i++)
-		res.push_back(value->ReadChar());
-	return res;
-}
-
-void cObject::loadFromStream(BinaryReader ^ value){
-	try{
-		this->setName(cObject::getString(value));
-		this->setDescription(cObject::getString(value));
-		this->setID();
-	}
-	catch (System::Exception^e)
-	{
-		throw e;
-	}
-};
-
 string cObject::getUN()
 {
 	return this->uniqueName;
