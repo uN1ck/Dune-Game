@@ -57,9 +57,15 @@ cObject* cBase::clone()
 }
 void cBase::Update(cObject *cell, cObject *world)
 {
-	for each (iUpdateble* current in *units)
+	for (vector<cUnit*>::iterator current = units->begin(); current != units->end(); current++)
 	{
-		current->Update(this, world);
+
+		(*current)->Update(this, world);
+		if ((*current)->getArmor() <= 0)
+		{
+			std::cout << " -->Dead: " << this->getName() << endl;
+			current = this->units->erase(current);
+		}
 	}
 }
 void cBase::putUnit(cUnit* value)
@@ -81,6 +87,19 @@ cBase::~cBase()
 	for (vector<cUnit*> ::iterator itr = units->begin(); itr != units->end(); itr++)
 		delete *itr;
 	delete units;
+}
+
+string cBase::uniqnameGenerate() const
+{
+	string res;
+	do
+	{
+		for (int i = 0; i < 16; i++)
+		{
+			res.push_back((char)(rand() % 200 - 100));
+		}
+	} while (this->uniq.find(res) != this->uniq.end());
+	return res;
 }
 
 void cBase::countStats()
@@ -154,12 +173,12 @@ void cBase::Generate(cObject *world, string value)
 	for (int i = 0; i < value[3] % 10 + 2; i++)
 	{
 		this->units->push_back(new cGunner(cUnit(cPosited(cObject("War Unit", "War unit, used to destroy enemy"), this->X() + i, this->Y()), barmor), new cGun(cObject("Gun", "The thing used to strike"), radius, damage)));
-
+		this->units->back()->setUN(this->uniqnameGenerate());
 	}
 	for (int i = 0; i < value[9] % 10 + 4; i++)
 	{
 		this->units->push_back(new cTanker(cUnit(cPosited(cObject("Harvest unit", "Harvest unit? used to get recourses"), this->X(), this->Y() + i), carmor), new cTank(cObject("Tank", "The thing used to bring resources"), 0, carrysize)));
-
+		this->units->back()->setUN(this->uniqnameGenerate());
 	}
 }
 

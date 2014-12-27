@@ -35,6 +35,7 @@ cTanker::~cTanker()
 
 void cTanker::Update(cObject *cell, cObject *world)
 {
+	cUnit::Update(cell, world);
 	this->control->activity(world, this);
 	/*Место обработки спайса*/
 	/*Место отработки интелекта*/

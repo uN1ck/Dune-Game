@@ -9,17 +9,20 @@
 #include "cGunner.h"
 #include "cTanker.h"
 #include "iAccess.h"
-
+#include <set>
+#include "iDelete.h"
 
 //bool compareObjects(cUnit *left, cUnit *right);
 
 class cBase :
 	public cUnit,
-	public iAccess
+	public iAccess,
+	public iDelete
 {
 protected:	vector<cUnit*>* units;
 protected:	map<string, int> counts;
 protected:	cTank* supply;
+private:	set<string> uniq;
 
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
@@ -55,7 +58,7 @@ public:		virtual void moveLeft(iAccess *world);
 public:		virtual void moveRight(iAccess *world);
 public:		virtual void doAction(iAccess *world, cObject *commited);
 
-
+protected:	string uniqnameGenerate() const;
 public:		virtual cObject* at(int x, int y);
 public:		virtual cObject* at(pair<int, int>);
 public:		virtual pair<int, int> position(string value);

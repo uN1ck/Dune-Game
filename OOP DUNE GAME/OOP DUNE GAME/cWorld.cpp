@@ -133,9 +133,9 @@ cObject* cWorld::at(int x, int y)
 				return value->at(x, y);
 
 		}
-		return &cObject("empty", "");
+		return new cObject("empty", "");
 	}
-	return &cObject("out", "");
+	return new cObject("out", "");
 }
 cObject* cWorld::at(pair<int, int> value)
 {
@@ -167,7 +167,7 @@ vector<cObject*> cWorld::getAround(int x, int y, int r)
 		if (current)
 		{
 			vector<cObject*> temp = current->getAround(x, y, r);
-			res.insert(temp.begin(), temp.begin(), temp.end());
+			res.insert(res.end(), temp.begin(), temp.end());
 		}
 	}
 	return res;

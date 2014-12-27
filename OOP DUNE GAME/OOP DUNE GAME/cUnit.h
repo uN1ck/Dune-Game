@@ -2,11 +2,12 @@
 #include "cPosited.h"
 #include "iClonable.h"
 #include "iUpdateble.h"
-#include <SFML/Graphics.hpp>
+#include <iostream>
 #include "iMovable.h"
 #include "iAccess.h"
 #include "iDrawable.h"
 #include "iController.h"
+#include "iDelete.h"
 
 class cUnit :
 	public cPosited,
@@ -55,8 +56,6 @@ public:		virtual cObject* clone();
 public:		virtual map< string, string > *readFile();
 public:		virtual void Update(cObject *cell, cObject *world);
 protected:	virtual void setID();
-
-
 
 public:		virtual void moveUp(iAccess * world);
 public:		virtual void moveDown(iAccess * world);

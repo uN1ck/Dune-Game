@@ -35,6 +35,7 @@ cGunner::~cGunner()
 }
 void cGunner::Update(cObject *cell, cObject *world)
 {
+	cUnit::Update(cell, world);
 	this->control->activity(world, this);
 	/*Место для стрельбы*/
 	/*Место отработки интелекта*/

@@ -11,13 +11,14 @@ cWorld *world;
 
 int main()
 {
-	freopen("Debugged.log", "r", stdout);
 	world = new cWorld();
 	world->Generate(string{ 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, false);
 
 	int ended = 1;
 	while (ended < 10)
 	{
+		string res = "Debugged" + to_string(ended) + ".log";
+		freopen(res.c_str(), "w", stdout);
 		cout << "\nITERATION\n\n";
 		world->Update();
 		cout << world->toString();
@@ -26,6 +27,7 @@ int main()
 		//cin >> ended;
 		//system("cls");
 		ended++;
+		
 	}
 	return 0;
 }

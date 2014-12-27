@@ -11,7 +11,8 @@
 using namespace std;
 
 class cWorld : 
-	public cObject
+	public cObject,
+	public iAccess
 {
 private:	vector< cObject* > *units;
 private:	vector< cObject* > *bases;

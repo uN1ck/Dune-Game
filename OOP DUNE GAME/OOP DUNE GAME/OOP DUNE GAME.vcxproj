@@ -99,6 +99,7 @@
     <ClInclude Include="cWorld.h" />
     <ClInclude Include="iAccess.h" />
     <ClInclude Include="iClonable.h" />
+    <ClInclude Include="iDelete.h" />
     <ClInclude Include="iDrawable.h" />
     <ClInclude Include="iMovable.h" />
     <ClInclude Include="iStringable.h" />

@@ -45,8 +45,10 @@ cUnit::cUnit(const cUnit &value) : cPosited(value)
 	this->setID();
 }
 
-void cUnit::Update(cObject *cell, cObject *world)
+void cUnit::Update(cObject *base, cObject *world)
 {
+
+		
 }
 
 cUnit::~cUnit()
@@ -81,23 +83,39 @@ void cUnit::setID()
 
 void cUnit::moveUp(iAccess *world)
 {
-	if (world->at(this->X(), this->Y() - 1)->getName()=="empty")
+	cObject *temp = world->at(this->X(), this->Y() - 1);
+	if (temp->getName() == "empty")
+	{
 		this->Y(this->Y() - 1);
+		delete temp;
+	}
 }
 void cUnit::moveDown(iAccess * world)
 {
-	if (world->at(this->X(), this->Y() + 1)->getName() == "empty")
+	cObject *temp = world->at(this->X(), this->Y() + 1);
+	if (temp->getName() == "empty")
+	{
 		this->Y(this->Y() + 1);
+		delete temp;
+	}
 }
 void cUnit::moveLeft(iAccess * world)
 {
-	if (world->at(this->X() - 1, this->Y())->getName() == "empty")
+	cObject *temp = world->at(this->X() - 1, this->Y());
+	if (temp->getName() == "empty")
+	{
 		this->X(this->X() - 1);
+		delete temp;
+	}
 }
 void cUnit::moveRight(iAccess * world)
 {
-	if (world->at(this->X() + 1, this->Y())->getName() == "empty")
+	cObject *temp = world->at(this->X() + 1, this->Y());
+	if (temp->getName() == "empty")
+	{
 		this->X(this->X() + 1);
+		delete temp;
+	}
 }
 void cUnit::doAction(iAccess *world, cObject *commited)
 {

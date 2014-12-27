@@ -124,6 +124,7 @@
     <ClInclude Include="cTankControl.h">
       <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
     </ClInclude>
+    <ClInclude Include="iDelete.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="floorBasic.bmp">
