@@ -82,12 +82,16 @@
     <ClCompile Include="cTanker.cpp" />
     <ClCompile Include="cUnit.cpp" />
     <ClCompile Include="cWorld.cpp" />
+    <ClCompile Include="form.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cBase.h" />
     <ClInclude Include="cGunControl.h" />
     <ClInclude Include="cTankControl.h" />
+    <ClInclude Include="form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="iController.h" />
     <ClInclude Include="cGun.h" />
     <ClInclude Include="cGunner.h" />
@@ -107,6 +111,18 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="floorBasic.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="form.resx">
+      <DependentUpon>form.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

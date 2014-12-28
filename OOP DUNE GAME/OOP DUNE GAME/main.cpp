@@ -1,28 +1,32 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
-#include "cWorld.h"
-#include <vector>
-#include "iDrawable.h"
-#include "iUpdateble.h"
-#include "cPosited.h"
 
 using namespace std;
 
-cWorld *world;
-vector< vector<int> >counts;
+#include "form.h"
 
+using namespace OOPDUNEGAME;
+using namespace OOPDUNEGAME::Windows::Forms;
 
-int main()
+[STAThreadAttribute]
+
+void main(array<System::String ^> ^args){
+	Application::EnableVisualStyles();
+	Application::SetCompatibleTextRenderingDefault(false);
+
+	Application::Run(gcnew form());
+}
+
+/*int gmain()
 {
 	world = new cWorld();
 	world->Generate(string{ 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 1);
 
 	int ended = 1;
 
-	while (ended < 25)
+	while (ended)
 	{
 		string res = "Debugged" + to_string(ended) + ".log";
-		freopen(res.c_str(), "w", stdout);
+		//freopen(res.c_str(), "w", stdout);
 		world->Update();
 		//cout << world->toString();
 		
@@ -48,8 +52,9 @@ int main()
 		for (int i = 0; i < counts.size(); i++)
 			cout << "Base #" << i << " WarUnits: " << counts[i][1] << " HarvestUnits: " << counts[i][0] << endl;
 		
-		ended++;
-		
+		cin >> ended;
+		system("cls");
+	
 	}
 	return 0;
-}
+}*/

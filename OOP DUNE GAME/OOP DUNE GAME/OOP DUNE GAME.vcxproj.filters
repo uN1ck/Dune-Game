@@ -68,6 +68,9 @@
     <ClCompile Include="cTankControl.cpp">
       <Filter>Файлы исходного кода\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="form.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="iClonable.h">
@@ -125,6 +128,7 @@
       <Filter>Заголовочные файлы\Classes\UnitParts</Filter>
     </ClInclude>
     <ClInclude Include="iDelete.h" />
+    <ClInclude Include="form.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="floorBasic.bmp">
