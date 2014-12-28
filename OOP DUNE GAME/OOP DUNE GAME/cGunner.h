@@ -25,7 +25,7 @@ public:		cGunner(const cUnit &value, cGun *in_gun);
 			/*Конструктор копирования*/
 public:		cGunner(const cGunner &value);
 
-public:		virtual void Update(cObject *cell, cObject *world);
+public:		virtual void Update(cObject *world, cObject *base);
 
 public:		~cGunner();
 protected:	virtual void setID();

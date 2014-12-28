@@ -4,5 +4,5 @@
 class iUpdateble
 {
 /*Метод обновления класса*/
-public:		virtual void Update(cObject *base, cObject *world) = 0;
+public:		virtual void Update(cObject *world, cObject *base) = 0;
 };

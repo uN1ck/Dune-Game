@@ -18,7 +18,7 @@ class cUnit :
 	//Поля
 private:	bool isFlying;
 private:	int armor;
-private:	int cost;
+private:	int cost = 10;
 protected:	iController *control;
 
 
@@ -38,8 +38,7 @@ public:		bool getFlying() const;
 			/*Взять текущее значение брони*/
 public:		int	getArmor() const;
 
-public:		int getCost();
-public:		virtual void setCost(int value);
+public:		static int getCost();
 
 			/*Задать нахождени еобьекта в воздухе или на земле*/
 public:		virtual void setFlying(bool value);

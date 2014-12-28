@@ -33,10 +33,10 @@ cGunner::~cGunner()
 {
 	delete this->gun;
 }
-void cGunner::Update(cObject *cell, cObject *world)
+void cGunner::Update(cObject *world, cObject *base)
 {
-	cUnit::Update(cell, world);
-	this->control->activity(world, this);
+	cUnit::Update(world, base);
+	this->control->activity(world, this, base);
 	/*Место для стрельбы*/
 	/*Место отработки интелекта*/
 }

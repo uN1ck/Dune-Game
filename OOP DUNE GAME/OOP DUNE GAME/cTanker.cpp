@@ -33,10 +33,10 @@ cTanker::~cTanker()
 	delete this->tank;
 }
 
-void cTanker::Update(cObject *cell, cObject *world)
+void cTanker::Update(cObject *world, cObject *base)
 {
-	cUnit::Update(cell, world);
-	this->control->activity(world, this);
+	cUnit::Update(world, base);
+	this->control->activity(world, this, base);
 	/*Место обработки спайса*/
 	/*Место отработки интелекта*/
 }

@@ -9,7 +9,7 @@ class cGunControl :
 public:
 	cGunControl();
 
-	virtual void activity(cObject* in_world, cObject* in_handler);
+	virtual void activity(cObject* in_world, cObject* in_handler, cObject* base);
 
 	virtual ~cGunControl();
 };

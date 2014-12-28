@@ -24,6 +24,13 @@ protected:	map<string, int> counts;
 protected:	cTank* supply;
 private:	set<string> uniq;
 
+
+	int damage = 5;
+	int radius = 6;
+	int barmor = 10;
+	int carmor = 20;
+	int carrysize = 100;
+
 	//Конструкторы
 			/*Конструктор объекта по умолчанию*/
 public:		cBase();
@@ -39,7 +46,7 @@ public:		void sortAllUnits();
 public:		virtual string toString();
 public:		virtual cObject* clone();
 public:		virtual map< string, string > *readFile();
-public:		virtual void Update(cObject *cell, cObject *world);
+public:		virtual void Update(cObject *world, cObject *base);
 
 public:		virtual void Generate(cObject *world, string value);
 
@@ -63,7 +70,7 @@ public:		virtual cObject* at(int x, int y);
 public:		virtual cObject* at(pair<int, int>);
 public:		virtual pair<int, int> position(string value);
 
-public:		virtual vector<cObject*> getAround(int x, int y, int r);
+public:		virtual vector<cObject*> getAround(int x, int y, int r, cObject *base);
 };
 
 //bool compareObjects(cUnit *left, cUnit *right);

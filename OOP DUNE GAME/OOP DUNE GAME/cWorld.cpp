@@ -2,23 +2,19 @@
 
 cWorld::cWorld() : cObject("Default world", "Default world description")
 {
-	units = new vector< cObject* >();
+
 	bases = new vector< cObject* >();
 	height = 0;
 	width = 0;
 }
 cWorld::cWorld(const cWorld& value) : cObject(value)
 {
-	units = value.units;
+
 	bases = value.bases;
 	height = value.height;
 	width = value.height;
 }
 
-vector< cObject* > *cWorld::getUnits() const
-{
-	return units;
-}
 vector< cObject* > *cWorld::getBases() const
 {
 	return bases;
@@ -28,8 +24,6 @@ string cWorld::toString()
 {
 	string result;
 	for each(cObject* current in *this->bases)
-		result += current->toString() + "=================================\n";
-	for each(cObject* current in *this->units)
 		result += current->toString() + "=================================\n";
 	return result;
 }
@@ -43,9 +37,16 @@ map <string, string> *cWorld::readFile()
 
 void cWorld::Update()
 {
-	for each (cObject *current in *this->bases)
+	for (vector<cObject *>::iterator current = this->bases->begin(); current != this->bases->end(); current++)
 	{
-		iUpdateble *upd = dynamic_cast<iUpdateble*> (current);
+		cUnit *element = dynamic_cast<cUnit*>(*current);
+			if (element)
+				if (element->getArmor() <= 0)
+				{
+					current = this->bases->erase(current);
+					break;
+				}
+		iUpdateble *upd = dynamic_cast<iUpdateble*> (*current);
 		if (upd)
 			upd->Update(this, this);
 	}
@@ -74,34 +75,28 @@ void cWorld::setWidth(int value)
 	this->width = value;
 }
 
-void cWorld::putUnit(cObject* value)
-{
-	value->setUN( to_string(this->units->size()+1));
-	this->units->push_back(value);
-}
-
 void cWorld::Generate(string value, bool debug)
 {
 	if (value.length() >= 8)
 	{
 		try{
-			this->setHeight(value[0] % 100 + 120);
-			this->setWidth(value[0] % 100 + 120);
+			this->setHeight(30);
+			this->setWidth(30);
 
-			for (int i = 0; i < value[2] % 3 + 2; i++)
+			for (int i = 0; i < 2; i++)
 			{
-				string baseName = "Base #" + to_string(i);
-				cBase *current = new cBase(cUnit(cPosited(cObject(baseName, "The base of player " + to_string(i)), i * 100 + 20, i * 100 + 20), value[4] % 1000 + 200), new vector<cUnit*>(0));
-				bases->push_back(current);
+				for (int k = 0; k < 2; k++)
+				{
+					string baseName = "Base #" + to_string(i*2+k);
+					cBase *current = new cBase(cUnit(cPosited(cObject(baseName, "The base of player " + to_string(i)), i * 10 + 4, k * 10 + 4), 200), new vector<cUnit*>(0));
+					bases->push_back(current);
 
-				cBase *currentBase = dynamic_cast<cBase*>(current);
-				currentBase->Generate(this, value);
+					cBase *currentBase = dynamic_cast<cBase*>(current);
+					currentBase->Generate(this, value);
 
-				if (debug)
-					cout << "========================================\n" << bases->back()->toString() << "\n\n";
-
-				for (int i = 0; i < currentBase->getAllUnits()->size(); i++)
-					this->units->push_back(currentBase->getAllUnits()->at(i));
+					if (debug)
+						cout << ":::::::::::::::::::::::::::::::::::::::\n" << bases->back()->toString() << "\n\n";
+				}
 			}
 
 			for (int i = 0; i < value[1] % 10 + 20; i++);
@@ -116,7 +111,6 @@ void cWorld::Generate(string value, bool debug)
 
 cWorld::~cWorld()
 {
-	delete units;
 	for (vector< cObject* >::iterator i = bases->begin(); i != bases->end(); i++)
 		delete *i;
 	delete bases;
@@ -124,16 +118,23 @@ cWorld::~cWorld()
 
 cObject* cWorld::at(int x, int y)
 {
-	if (x < this->getWidth() && y < this->getHeight())
+	cObject *res = new cObject("empty", "");;
+	if (x < this->getHeight() && y < this->getWidth() && x >= 0 && y >= 0)
 	{
-		for each(cObject *current in *this->bases)
-		{
-			iAccess *value = dynamic_cast<iAccess *>(current);
-			if (value && x < this->getHeight() && y < this->getWidth() && x >= 0 && y <= 0)
-				return value->at(x, y);
-
+		for (vector<cObject *>::iterator current = this->bases->begin(); current != this->bases->end(); current++)
+		{	
+			cPosited *element = dynamic_cast<cPosited*>(*current);
+			if (element->X() == x && element->Y() == y)
+				return (*current);
 		}
-		return new cObject("empty", "");
+
+		for (vector<cObject *>::iterator current = this->bases->begin(); current != this->bases->end(); current++)
+		{
+			iAccess *value = dynamic_cast<iAccess *>(*current);
+			if (value && res->getName()=="empty")
+				res = value->at(x, y);
+		}
+		return res;
 	}
 	return new cObject("out", "");
 }
@@ -158,16 +159,21 @@ static string generateSEED(){
 		res.push_back(rand() % 1001);
 }
 
-vector<cObject*> cWorld::getAround(int x, int y, int r)
+vector<cObject*> cWorld::getAround(int x, int y, int r, cObject *base)
 {
 	vector<cObject*> res;
-	for each(cObject* obj in *this->getBases())
+	for each(cPosited* obj in *this->getBases())
 	{
-		iAccess* current = dynamic_cast<iAccess*>(obj);
-		if (current)
+		if (obj->getName() != base->getName())
 		{
-			vector<cObject*> temp = current->getAround(x, y, r);
-			res.insert(res.end(), temp.begin(), temp.end());
+			if ( ((obj->X() - x)*(obj->X() - x) + (obj->Y() - y)*(obj->Y() - y))<r*r)
+				res.push_back(obj);
+			iAccess* current = dynamic_cast<iAccess*>(obj);
+			if (current)
+			{
+				vector<cObject*> temp = current->getAround(x, y, r, obj);
+				res.insert(res.end(), temp.begin(), temp.end());
+			}
 		}
 	}
 	return res;

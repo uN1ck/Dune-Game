@@ -5,7 +5,7 @@ cTankControl::cTankControl()
 {
 }
 
-void cTankControl::activity(cObject* in_world, cObject* in_handler)
+void cTankControl::activity(cObject* in_world, cObject* in_handler, cObject *base)
 {
 	iAccess *world = dynamic_cast<iAccess*>(in_world);
 	cTanker *self = dynamic_cast<cTanker*>(in_handler);

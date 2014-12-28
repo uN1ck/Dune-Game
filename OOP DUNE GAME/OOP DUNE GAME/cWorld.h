@@ -14,7 +14,6 @@ class cWorld :
 	public cObject,
 	public iAccess
 {
-private:	vector< cObject* > *units;
 private:	vector< cObject* > *bases;
 private:	int height;
 private:	int width;
@@ -23,14 +22,12 @@ public:		cWorld();
 public:		cWorld(const cWorld& value);
 
 public:	vector< vector< cObject* > > * getWorld();
-public: vector< cObject* > *getUnits() const;
 public: vector< cObject* > *getBases() const;
 
 public:	virtual cObject* at(int x, int y);
 public:	virtual cObject* at(pair<int, int>);
 public:	virtual pair<int, int> position(string value);
 
-public: void putUnit(cObject* value);
 public:	int getHeight();
 public: void setHeight(int value);
 public:	int getWidth();
@@ -46,7 +43,7 @@ public:		virtual map< string, string > *readFile();
 
 public:		static string generateSEED();
 
-public:		virtual vector<cObject*> getAround(int x, int y, int r);
+public:		virtual vector<cObject*> getAround(int x, int y, int r, cObject *base);
 	virtual ~cWorld();
 };
 

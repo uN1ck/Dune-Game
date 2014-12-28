@@ -45,10 +45,9 @@ cUnit::cUnit(const cUnit &value) : cPosited(value)
 	this->setID();
 }
 
-void cUnit::Update(cObject *base, cObject *world)
+void cUnit::Update(cObject *world, cObject *base)
 {
-
-		
+			
 }
 
 cUnit::~cUnit()
@@ -64,22 +63,15 @@ cObject* cUnit::clone()
 	cObject *cloned = new cUnit(*this);
 	return cloned;
 }
-
-void cUnit::setCost(int value)
-{
-	this->cost = value;
-}
 int cUnit::getCost()
 {
-	return this->cost;
+	return 10;
 }
 
 void cUnit::setID()
 {
 	this->ID = typeid(this).name();
 }
-
-
 
 void cUnit::moveUp(iAccess *world)
 {

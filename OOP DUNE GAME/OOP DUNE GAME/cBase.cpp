@@ -6,16 +6,19 @@ cBase::cBase() : cUnit(cPosited(cObject("Default base name", "Default Base descr
 {
 	units = new vector<cUnit*>(0);
 	this->setID();
+	this->supply = new cTank(cObject("Tank of base", "The supply center"), 50, 1000);
 }
 cBase::cBase(const cUnit &value, vector<cUnit*>*in_units) : cUnit(value)
 {
 	this->setAllUnits(in_units);
 	this->setID();
+	this->supply = new cTank(cObject("Tank of base", "The supply center"), 50, 1000);
 }
 cBase::cBase(const cBase &value) : cUnit(value)
 {
 	this->setAllUnits(value.getAllUnits());
 	this->setID();
+	this->supply = value.supply;
 }
 
 bool compareObjects(cUnit *left, cUnit *right)
@@ -30,10 +33,7 @@ vector<cUnit*>* cBase::getAllUnits() const
 void cBase::setAllUnits(vector<cUnit*>* value)
 {
 	this->units = value;
-	for each(cUnit* current in *units)
-	{
-		this->setCost(this->getCost() + current->getCost());
-	}
+
 }
 
 string cBase::toString()
@@ -55,23 +55,28 @@ cObject* cBase::clone()
 	cObject *cloned = new cBase(*this);
 	return cloned;
 }
-void cBase::Update(cObject *cell, cObject *world)
+void cBase::Update(cObject *world, cObject *base)
 {
-	for (vector<cUnit*>::iterator current = units->begin(); current != units->end(); current++)
+	for (vector<cUnit*>::iterator current = units->begin(); current != this->units->end(); current++)
 	{
-
-		(*current)->Update(this, world);
+		(*current)->Update(world, this);
 		if ((*current)->getArmor() <= 0)
 		{
-			std::cout << " -->Dead: " << this->getName() << endl;
+			std::cout << " -->Dead: " << (*current)->getName() << endl;
 			current = this->units->erase(current);
 		}
+		if (current == this->units->end())
+			break;
+	}
+	if (this->supply->getFilling() - cUnit::getCost())
+	{
+		this->units->push_back(new cGunner(cUnit(cPosited(cObject("War Unit", "War unit, used to destroy enemy"), this->X() + 1, this->Y()), barmor), new cGun(cObject("Gun", "The thing used to strike"), radius, damage)));
+		this->units->back()->setUN(this->uniqnameGenerate());
 	}
 }
 void cBase::putUnit(cUnit* value)
 {
 	this->units->push_back(value);
-	this->setCost(this->getCost() + value->getCost());
 	if (this->counts.find(value->getID()) != this->counts.end())
 		this->counts[value->getID()]++;
 	else
@@ -164,18 +169,14 @@ void cBase::deleteUnitbyUN(string value)
 
 void cBase::Generate(cObject *world, string value)
 {
-	int damage = value[6] % 10 + 2;
-	int radius = value[5] % 10 + 10;
-	int barmor = value[4] % 21 + 40;
-	int carmor = value[10] % 21 + 20;
-	int carrysize = value[11]%21 + 80;
 
-	for (int i = 0; i < value[3] % 10 + 2; i++)
+
+	for (int i = 1; i < 4; i++)
 	{
 		this->units->push_back(new cGunner(cUnit(cPosited(cObject("War Unit", "War unit, used to destroy enemy"), this->X() + i, this->Y()), barmor), new cGun(cObject("Gun", "The thing used to strike"), radius, damage)));
 		this->units->back()->setUN(this->uniqnameGenerate());
 	}
-	for (int i = 0; i < value[9] % 10 + 4; i++)
+	for (int i = 1; i < 4; i++)
 	{
 		this->units->push_back(new cTanker(cUnit(cPosited(cObject("Harvest unit", "Harvest unit? used to get recourses"), this->X(), this->Y() + i), carmor), new cTank(cObject("Tank", "The thing used to bring resources"), 0, carrysize)));
 		this->units->back()->setUN(this->uniqnameGenerate());
@@ -211,7 +212,7 @@ cObject* cBase::at(int x, int y)
 		if (current->X() == x && current->Y() == y)
 			return current;
 	}
-	return &cObject("empty", "");
+	return new cObject("empty", "");
 }
 cObject* cBase::at(pair<int, int> value)
 {
@@ -228,7 +229,7 @@ pair<int, int> cBase::position(string value)
 	pair<int, int>(-1, -1);
 }
 
-vector<cObject*> cBase::getAround(int x, int y, int r)
+vector<cObject*> cBase::getAround(int x, int y, int r, cObject *base)
 {
 	vector<cObject*> res;
 	for each(cPosited* obj in *this->getAllUnits())

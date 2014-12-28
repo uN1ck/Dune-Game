@@ -15,7 +15,7 @@ void cGun::setDistance(const int value)
 }
 void cGun::setDamage(const int value)
 {
-	this->damage;
+	this->damage = value;
 }
 
 map <string, string> *cGun::readFile()
@@ -56,7 +56,7 @@ void cGun::setID()
 string cGun::toString()
 {
 	string res = cObject::toString();
-	res += "#Damage" + to_string(this->getDamage()) + "\n";
-	res += "#DamageDistance" + to_string(this->getDistance()) + "\n";
+	res += "#Damage " + to_string(this->getDamage()) + "\n";
+	res += "#DamageDistance " + to_string(this->getDistance()) + "\n";
 	return res;
 }

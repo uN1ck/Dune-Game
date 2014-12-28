@@ -9,7 +9,7 @@ class cTankControl :
 public:
 	cTankControl();
 
-	virtual void activity(cObject* in_world, cObject* in_handler);
+	virtual void activity(cObject* in_world, cObject* in_handler, cObject* base);
 
 	virtual ~cTankControl();
 };
